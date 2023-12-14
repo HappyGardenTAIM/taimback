@@ -1,8 +1,5 @@
 import { PrismaClient } from '@prisma/client';
 import { GraphQLDateTime } from 'graphql-scalars';
-
-const prisma = new PrismaClient();
-
 interface ResolverContext {
   prisma: PrismaClient;
 }

@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -20,13 +23,13 @@ model Journey {
   id        Int           @id @default(autoincrement())
   startedAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
+  user      User          @relation(fields: [userId], references: [id])
   userId    Int
-  phase     Phase
+  plant     Plant         @relation(fields: [plantId], references: [id])
   plantId   Int
   status    JourneyStatus @default(ACTIVE)
-  plant     Plant         @relation(fields: [plantId], references: [id])
-  user      User          @relation(fields: [userId], references: [id])
-  tasks     Task[]        @relation("JourneyToTask")
+  phase     Phase
+  tasks     Task[]
 }
 
 model Plant {
@@ -37,23 +40,24 @@ model Plant {
   difficulty    Difficulty
   maintenance   String
   type          PlantType
-  flower        Flower?
-  food          Food?
-  journeys      Journey[]
   sprout        Sprout?
+  food          Food?
+  flower        Flower?
+  journeys      Journey[]
 }
 
 model Sprout {
   id           Int     @id @default(autoincrement())
+  plant        Plant   @relation(fields: [plantId], references: [id])
   plantId      Int     @unique
   sproutLength Int
   usage        String?
   benefits     String?
-  plant        Plant   @relation(fields: [plantId], references: [id])
 }
 
 model Food {
   id         Int     @id @default(autoincrement())
+  plant      Plant   @relation(fields: [plantId], references: [id])
   plantId    Int     @unique
   light      Light
   watering   Int
@@ -62,11 +66,11 @@ model Food {
   maturity   String
   usage      String?
   benefits   String?
-  plant      Plant   @relation(fields: [plantId], references: [id])
 }
 
 model Flower {
   id         Int     @id @default(autoincrement())
+  plant      Plant   @relation(fields: [plantId], references: [id])
   plantId    Int     @unique
   light      Light
   watering   Int
@@ -74,15 +78,14 @@ model Flower {
   maturity   String
   appearance String
   usage      String?
-  plant      Plant   @relation(fields: [plantId], references: [id])
 }
 
 model Task {
   id       Int        @id @default(autoincrement())
+  journeys Journey[]
   taskType TaskType
   status   TaskStatus
   lastDone DateTime
-  journeys Journey[]  @relation("JourneyToTask")
 }
 
 enum Role {

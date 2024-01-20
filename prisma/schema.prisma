@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,23 +8,133 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  email     String   @unique
-  name      String?
-  role      Role     @default(USER)
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  email     String    @unique
+  name      String    @unique
+  role      Role      @default(USER)
   journeys  Journey[]
 }
 
 model Journey {
-  id        Int      @id @default(autoincrement())
-  startedAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id])
+  id        Int           @id @default(autoincrement())
+  startedAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
   userId    Int
+  phase     Phase
+  plantId   Int
+  status    JourneyStatus @default(ACTIVE)
+  plant     Plant         @relation(fields: [plantId], references: [id])
+  user      User          @relation(fields: [userId], references: [id])
+  tasks     Task[]        @relation("JourneyToTask")
+}
+
+model Plant {
+  id            Int        @id @default(autoincrement())
+  name          String     @unique
+  minGrowthTime Int
+  maxGrowthTime Int
+  difficulty    Difficulty
+  maintenance   String
+  type          PlantType
+  flower        Flower?
+  food          Food?
+  journeys      Journey[]
+  sprout        Sprout?
+}
+
+model Sprout {
+  id           Int     @id @default(autoincrement())
+  plantId      Int     @unique
+  sproutLength Int
+  usage        String?
+  benefits     String?
+  plant        Plant   @relation(fields: [plantId], references: [id])
+}
+
+model Food {
+  id         Int     @id @default(autoincrement())
+  plantId    Int     @unique
+  light      Light
+  watering   Int
+  harvesting Int?
+  pruning    Int?
+  maturity   String
+  usage      String?
+  benefits   String?
+  plant      Plant   @relation(fields: [plantId], references: [id])
+}
+
+model Flower {
+  id         Int     @id @default(autoincrement())
+  plantId    Int     @unique
+  light      Light
+  watering   Int
+  pruning    Int?
+  maturity   String
+  appearance String
+  usage      String?
+  plant      Plant   @relation(fields: [plantId], references: [id])
+}
+
+model Task {
+  id       Int        @id @default(autoincrement())
+  taskType TaskType
+  status   TaskStatus
+  lastDone DateTime
+  journeys Journey[]  @relation("JourneyToTask")
 }
 
 enum Role {
   USER
   ADMIN
+}
+
+enum JourneyStatus {
+  ACTIVE
+  FINISHED
+  ABANDONED
+}
+
+enum Phase {
+  PREP
+  SOAKING
+  GROWING
+  HARVESTING
+}
+
+enum PlantType {
+  SPROUT
+  FOOD
+  FLOWER
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum Light {
+  FULL_SUN
+  PARTIAL_SUN
+  SHADE
+  INDIRECT_LIGHT
+  LOW_LIGHT
+}
+
+enum TaskType {
+  SOAK
+  RINSE
+  WATER
+  FERTILIZE
+  PRUNE
+  HARVEST
+  CHECK
+}
+
+enum TaskStatus {
+  PENDING
+  COMPLETED
+  SKIPPED
 }

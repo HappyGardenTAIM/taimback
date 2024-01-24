@@ -29,7 +29,7 @@ model Journey {
   plantId   Int
   status    JourneyStatus @default(ACTIVE)
   phase     Phase
-  tasks     Task[]
+  tasks     JourneyTask[]
 }
 
 model Plant {
@@ -40,7 +40,7 @@ model Plant {
   difficulty    Difficulty
   maintenance   String
   type          PlantType
-  sprout        Sprout?
+  sprout        Sprout?     
   food          Food?
   flower        Flower?
   journeys      Journey[]
@@ -81,11 +81,22 @@ model Flower {
 }
 
 model Task {
-  id       Int        @id @default(autoincrement())
-  journeys Journey[]
-  taskType TaskType
-  status   TaskStatus
-  lastDone DateTime
+  id         Int           @id @default(autoincrement())
+  journeys   JourneyTask[]
+  taskType   TaskType
+  status     TaskStatus
+  lastDone   DateTime
+}
+
+model JourneyTask {
+  journey   Journey     @relation(fields: [journeyId], references: [id])
+  journeyId Int
+  task      Task        @relation(fields: [taskId], references: [id])
+  taskId    Int
+  status    TaskStatus
+  lastDone  DateTime
+
+  @@id([journeyId, taskId])
 }
 
 enum Role {

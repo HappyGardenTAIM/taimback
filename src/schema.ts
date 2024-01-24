@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import {  PlantType, PrismaClient } from '@prisma/client';
 import { GraphQLDateTime } from 'graphql-scalars';
 interface ResolverContext {
   prisma: PrismaClient;
@@ -19,6 +19,13 @@ const resolvers = {
     journey: async (_, { id }, { prisma }: ResolverContext) => {
       return await prisma.journey.findUnique({ where: { id } });
     },
+    journeyTypes: () => {
+      const journeyTypes = Object.values(PlantType);
+      return journeyTypes;
+    },
+    plantList: async (_, { type }, { prisma }: ResolverContext) => {
+      return await prisma.plant.findMany({ where: { type } });
+    }
   },
 
   Mutation: {
@@ -43,6 +50,26 @@ const resolvers = {
       return await prisma.journey
         .findUnique({ where: { id: parent.id } })
         .user();
+    },
+    plant: async (parent, _, { prisma }: ResolverContext) => {
+      return await prisma.journey
+        .findUnique({ where: { id: parent.id } })
+        .plant();
+    },
+    status: async (parent, _, { prisma }: ResolverContext) => {
+      return (await prisma.journey
+        .findUnique({ where: { id: parent.id } }))
+        .status;
+    },
+    phase: async (parent, _, { prisma }: ResolverContext) => {
+      return (await prisma.journey
+        .findUnique({ where: { id: parent.id } }))
+        .phase;
+    },
+    tasks: async (parent, _, { prisma }: ResolverContext) => {
+      return await prisma.journey
+        .findUnique({ where: { id: parent.id } })
+        .tasks();
     },
   },
 };

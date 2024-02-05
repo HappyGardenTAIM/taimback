@@ -20,12 +20,23 @@ const resolvers = {
       return await prisma.journey.findUnique({ where: { id } });
     },
     journeyTypes: () => {
-      const journeyTypes = Object.values(PlantType);
-      return journeyTypes;
+      return Object.values(PlantType);
     },
-    plantList: async (_, { type }, { prisma }: ResolverContext) => {
-      return await prisma.plant.findMany({ where: { type } });
-    }
+    plantList: async (_, { type, plantType }, { prisma }: ResolverContext) => {
+      const include: { sprout?: boolean, food?: boolean, flower?: boolean } = {};
+      if (plantType === 'SPROUT') {
+        include.sprout = true;
+      } else if (plantType === 'FOOD') {
+        include.food = true;
+      } else if (plantType === 'FLOWER') {
+        include.flower = true;
+      }
+    
+      return await prisma.plant.findMany({ 
+        where: { type },
+        include
+      });
+    },
   },
 
   Mutation: {

@@ -1,0 +1,76 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+      IMAGE_NAME: taim
+      REPO: https://github.com/HappyGardenTAIM/taimback
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+jobs: 
+      
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build and push Docker image
+      run: |
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest .
+        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+
+        
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+    - name: Clone repo to server
+      uses: appleboy/ssh-action@v0.1.3
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.HOST }} '
+            ls -la
+            cd /taimback
+            git pull origin main
+            # Stop and remove running containers
+            docker stop $(docker ps -q)
+            docker rm $(docker ps -aq)
+            docker-compose up -d
+            '
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      - name: Deploy to your server via SSH
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # SSH into the server
+            ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.HOST }}
+            # Log in to Docker Hub
+            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+            # Pull the Docker image
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+            # Stop and remove running containers
+            docker stop $(docker ps -q)
+            docker rm $(docker ps -aq)
+            # Start a new container with the pulled image
+            docker run -d -e DATABASE_URL=${{ secrets.DATABASE_URL }} --network taimnetwork --name ${{ env.IMAGE_NAME }} -p 80:4000 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
+            # Start Docker Compose
+            cd /taimback
+            docker-compose up -d
+            docker exec ${{ env.IMAGE_NAME }} npx prisma migrate reset --force

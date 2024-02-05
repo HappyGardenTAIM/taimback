@@ -2,19 +2,6 @@ import { PrismaClient, Prisma } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-// export type PlantCreateInput = {
-//   name: string
-//   minGrowthTime: number
-//   maxGrowthTime: number
-//   difficulty: $Enums.Difficulty
-//   maintenance: string
-//   type: $Enums.PlantType
-//   sprout?: SproutCreateNestedOneWithoutPlantInput
-//   food?: FoodCreateNestedOneWithoutPlantInput
-//   flower?: FlowerCreateNestedOneWithoutPlantInput
-//   journeys?: JourneyCreateNestedManyWithoutPlantInput
-// }
-
 const plantData: Prisma.PlantCreateInput[] = [
   {
     name: 'Basiilik',
@@ -23,6 +10,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'EASY',
     maintenance: 'Vajab regulaarset kastmist ja vähemalt 6 tundi päikesevalgust päevas. Õied näpistada ära, et soodustada lehtede kasvu.',
     type: 'FOOD',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/9/97/Ocimum_basilicum_8zz.jpg',
   },
   {
     name: 'Kurgirohi',
@@ -31,6 +19,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'EASY',
     maintenance: 'Vajab regulaarset kastmist ja poolvarjulist kasvukohta. Sobib hästi rõdukasti või aknalauale.',
     type: 'FOOD',
+    image: 'https://bs.plantnet.org/image/o/2c5f4952702d2a3b4bd997a90c5c63a5feb108e5',
   },
   {
     name: 'Petersell',
@@ -39,14 +28,16 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'EASY',
     maintenance: 'Vajab regulaarset kastmist ja poolvarjulist kasvukohta. Sobib hästi rõdukasti või aknalauale.',
     type: 'FOOD',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Petroselinum_crispum_002.JPG'
   },
   {
-    name: 'Salat',
+    name: 'Lehtsalat',
     minGrowthTime: 25,
     maxGrowthTime: 35,
     difficulty: 'EASY',
     maintenance: 'Vajab regulaarset kastmist ja päikeselist kasvukohta. Sobib hästi maitsetaimena kasutamiseks.',
     type: 'FOOD',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Lettuce_Cultivars_by_David_Shankbone.JPG',
   },
   {
     name: 'Tomat',
@@ -55,6 +46,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'MEDIUM',
     maintenance: 'Vajab mõõdukat kastmist ja päikeselist kasvukohta. Sobib hästi rõdukasti või aknalauale.',
     type: 'FOOD',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Tomato_je.jpg',
   },
   {
     name: 'Päevalill',
@@ -63,14 +55,16 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'EASY',
     maintenance: 'Leota üleöö seemneid vees, seejärel nõruta. Loputa igal hommikul ja õhtul.',
     type: 'SPROUT',
+    image: 'https://live.staticflickr.com/65535/50535635376_b1a551ecbf_6k.jpg',
   },
   {
-    name: 'Mungoa',
+    name: 'Munguba',
     minGrowthTime: 2,
     maxGrowthTime: 3,
     difficulty: 'MEDIUM',
     maintenance: 'Leota üleöö seemneid vees, seejärel nõruta. Loputa igal hommikul ja õhtul.',
     type: 'SPROUT',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/f/fe/Mung_bean_sprouts%2C_close-up.jpg',
   },
   {
     name: 'Kikerhernes',
@@ -79,6 +73,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'MEDIUM',
     maintenance: 'Leota üleöö seemneid vees, seejärel nõruta. Loputa igal hommikul ja õhtul.',
     type: 'SPROUT',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/d/d2/Sprouted-chickpea.jpg',
   },
   {
     name: 'Päevalill2',
@@ -87,6 +82,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'EASY',
     maintenance: 'Leota üleöö seemneid vees, seejärel nõruta. Loputa igal hommikul ja õhtul.',
     type: 'SPROUT',
+    
   },
   {
     name: 'Brokoli',
@@ -95,6 +91,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'EASY',
     maintenance: 'Vajavad iga päev loputamist ja idandamist. Kasvavad kiiresti ja on rikkad toitainete poolest.',
     type: 'SPROUT',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Brokkolisprossen-schale-knole.jpg',
   },
   {
     name: 'Peiulill',
@@ -103,14 +100,16 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'EASY',
     maintenance: 'Water once a week',
     type: 'FLOWER',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Tagetes_erecta_03.JPG',
   },
   {
-    name: 'Harilik Pelargoonium',
+    name: 'Pelargoon',
     minGrowthTime: 30,
     maxGrowthTime: 45,
     difficulty: 'EASY',
     maintenance: 'Vajab regulaarset kastmist ja päikeselist kasvukohta. Õitseb rikkalikult suvekuudel.',
     type: 'FLOWER',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Pelargonium_x_hortorum_Rocky_Mountain_Light_Pink_1zz.jpg',
   },
   {
     name: 'Nasturtium',
@@ -119,6 +118,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'EASY',
     maintenance: 'Vajab mõõdukat kastmist ja päikeselist kasvukohta. Õitseb erksate lilledega.',
     type: 'FLOWER',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Nasturtium_tropaeolum_flores.jpg',
   },
   {
     name: 'Tulp',
@@ -127,6 +127,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'EASY',
     maintenance: 'Vajab regulaarset kastmist ja päikeselist kasvukohta. Õitseb rikkalikult suvekuudel.',
     type: 'FLOWER',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/4/48/Tulp.jpg',
   },
   {
     name: 'Kassinaeris',
@@ -135,21 +136,15 @@ const plantData: Prisma.PlantCreateInput[] = [
     difficulty: 'EASY',
     maintenance: 'Vajab mõõdukat kastmist ja päikeselist kasvukohta. Sobib hästi rõdukasti või aknalauale.',
     type: 'FLOWER',
+    image: 'https://bs.plantnet.org/image/o/8b0d4b9751d8980977a0487ee15bb02dd0e98e85',
   },
 ]
-
-// export type SproutCreateInput = {
-//   sproutLength: number
-//   usage?: string | null
-//   benefits?: string | null
-//   plant: PlantCreateNestedOneWithoutSproutInput
-// }
 
 const sproutData: Prisma.SproutCreateInput[] = [
   {
     sproutLength: 3,
-    usage: 'Sobib hästi salatitesse ja võileibadele lisamiseks.',
-    benefits: 'Rohkelt C-vitamiini ja kiudaineid.',
+    usage: 'Lisa päevalille idud smuutidele ja võileibadele!',
+    benefits: 'Rohkesti C-vitamiini ja kiudaineid.',
     plant: {
       connect: {
         name: 'Päevalill',
@@ -158,18 +153,18 @@ const sproutData: Prisma.SproutCreateInput[] = [
   },
   {
     sproutLength: 3,
-    usage: 'Sobib hästi salatitesse ja võileibadele lisamiseks.',
-    benefits: 'Rohkelt C-vitamiini ja kiudaineid.',
+    usage: 'Munguba idud sobivad suurepäraselt salatitesse ja suppidesse!',
+    benefits: 'Pakatavad C-vitamiini ja mineraalide poolest.',
     plant: {
       connect: {
-        name: 'Mungoa',
+        name: 'Munguba',
       },
     },
   },
   {
     sproutLength: 3,
-    usage: 'Sobib hästi salatitesse ja võileibadele lisamiseks.',
-    benefits: 'Rohkelt C-vitamiini ja kiudaineid.',
+    usage: 'Lisa kikerherneste idud pastadesse ja wrapidesse!',
+    benefits: 'Täis antioksüdante ja kiudaineid.',
     plant: {
       connect: {
         name: 'Kikerhernes',
@@ -178,8 +173,8 @@ const sproutData: Prisma.SproutCreateInput[] = [
   },
   {
     sproutLength: 3,
-    usage: 'Sobib hästi salatitesse ja võileibadele lisamiseks.',
-    benefits: 'Rohkelt C-vitamiini ja kiudaineid.',
+    usage: 'Päevalille idud on suurepärased lisandid võileibadele ja rohelisele salatile!',
+    benefits: 'Tervislikud ja pakatavad kasulikest toitainetest.',
     plant: {
       connect: {
         name: 'Päevalill2',
@@ -188,26 +183,15 @@ const sproutData: Prisma.SproutCreateInput[] = [
   },
   {
     sproutLength: 7,
-    usage: 'Sobib hästi salatitesse ja võileibadele lisamiseks.',
-    benefits: 'Rohkelt C-vitamiini ja kiudaineid.',
+    usage: 'Brokoli idud lisavad hõrku maitset salatitele ja pearoogadele!',
+    benefits: 'Toetavad tugevat immuunsüsteemi ja on rikkad vitamiinide poolest.',
     plant: {
       connect: {
         name: 'Brokoli',
       },
     },
   },
-]
-
-//   export type FoodCreateInput = {
-//   light: $Enums.Light
-//   watering: number
-//   harvesting?: number | null
-//   pruning?: number | null
-//   maturity: string
-//   usage?: string | null
-//   benefits?: string | null
-//   plant: PlantCreateNestedOneWithoutFoodInput
-// }
+];
 
 const foodData: Prisma.FoodCreateInput[] = [
   {
@@ -262,7 +246,7 @@ const foodData: Prisma.FoodCreateInput[] = [
     pruning: null,
     plant: {
       connect: {
-        name: 'Salat',
+        name: 'Lehtsalat',
       },
     },
   },
@@ -300,7 +284,7 @@ const flowerData: Prisma.FlowerCreateInput[] = [
     appearance: 'Kollased õied.',
     plant: {
       connect: {
-        name: 'Harilik Pelargoonium',
+        name: 'Pelargoon',
       },
     },
   },

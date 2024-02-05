@@ -25,7 +25,8 @@ const typeDefs = gql`
 
   type Plant {
     id: Int!          
-    name: String!       
+    name: String!
+    image: String       
     minGrowthTime: Int!          
     maxGrowthTime: Int!          
     difficulty: Difficulty!   

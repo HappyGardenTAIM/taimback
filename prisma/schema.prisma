@@ -29,7 +29,7 @@ model Journey {
   plant     Plant         @relation(fields: [plantId], references: [id])
   plantId   Int
   status    JourneyStatus @default(ACTIVE)
-  phase     Phase
+  phase     Phase         @default(PREP)
   tasks     JourneyTask[]
 }
 

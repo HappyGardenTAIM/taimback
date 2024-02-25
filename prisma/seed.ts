@@ -143,7 +143,6 @@ const plantData: Prisma.PlantCreateInput[] = [
 const sproutData: Prisma.SproutCreateInput[] = [
   {
     sproutLength: 3,
-    usage: 'Lisa päevalille idud smuutidele ja võileibadele!',
     benefits: 'Rohkesti C-vitamiini ja kiudaineid.',
     plant: {
       connect: {
@@ -154,7 +153,6 @@ const sproutData: Prisma.SproutCreateInput[] = [
   {
     sproutLength: 3,
     usage: 'Munguba idud sobivad suurepäraselt salatitesse ja suppidesse!',
-    benefits: 'Pakatavad C-vitamiini ja mineraalide poolest.',
     plant: {
       connect: {
         name: 'Munguba',
@@ -163,8 +161,6 @@ const sproutData: Prisma.SproutCreateInput[] = [
   },
   {
     sproutLength: 3,
-    usage: 'Lisa kikerherneste idud pastadesse ja wrapidesse!',
-    benefits: 'Täis antioksüdante ja kiudaineid.',
     plant: {
       connect: {
         name: 'Kikerhernes',

@@ -22,19 +22,10 @@ const resolvers = {
     journeyTypes: () => {
       return Object.values(PlantType);
     },
-    plantList: async (_, { type, plantType }, { prisma }: ResolverContext) => {
-      const include: { sprout?: boolean, food?: boolean, flower?: boolean } = {};
-      if (plantType === 'SPROUT') {
-        include.sprout = true;
-      } else if (plantType === 'FOOD') {
-        include.food = true;
-      } else if (plantType === 'FLOWER') {
-        include.flower = true;
-      }
-    
-      return await prisma.plant.findMany({ 
+    plantList: async (_, { type}, { prisma }: ResolverContext) => { 
+      return await prisma.plant.findMany({
         where: { type },
-        include
+        include: { sprout: true, food: true, flower: true},
       });
     },
   },

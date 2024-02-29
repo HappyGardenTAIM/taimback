@@ -6,7 +6,7 @@ const typeDefs = gql`
   type User {
     id: Int!
     createdAt: DateTime!
-    email: String!
+    email: String
     name: String!
     role: Role!
     journeys: [Journey!]
@@ -146,15 +146,14 @@ const typeDefs = gql`
   }
 
   input CreateUserInput {
-    email: String!
+    # email: String
     name: String
     role: Role
   }
 
   input CreateJourneyInput {
-    startedAt: DateTime!
-    updatedAt: DateTime!
     userId: Int!
+    plantId: Int!
   }
 `;
 

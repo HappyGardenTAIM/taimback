@@ -52,6 +52,10 @@ Create .env file and add:
 
 ## Usage
 
+Create docker network:
+
+```docker network create taimnetwork```
+
 Start Docker:
 
 ```docker-compose up -d```

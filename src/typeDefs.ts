@@ -21,6 +21,7 @@ const typeDefs = gql`
     status: JourneyStatus!
     phase: Phase!
     tasks: [Task!]!
+    journeyTasks: [JourneyTask!]!
   }
 
   type Plant {
@@ -35,7 +36,8 @@ const typeDefs = gql`
     sprout: Sprout      
     food: Food        
     flower: Flower      
-    journeys: [Journey!]! 
+    journeys: [Journey!]!
+    taskDetails: [PlantToTaskDetail!]!
   }
 
   type Sprout {
@@ -44,6 +46,7 @@ const typeDefs = gql`
     sproutLength: Int!
     usage: String
     benefits: String
+    taskDetails: [SproutToTaskDetail!]!
   }
 
   type Food {
@@ -56,6 +59,7 @@ const typeDefs = gql`
     maturity: String!
     usage: String
     benefits: String
+    taskDetails: [FoodToTaskDetail!]!
   }
 
   type Flower {
@@ -67,6 +71,7 @@ const typeDefs = gql`
     maturity: String!
     appearance: String!
     usage: String
+    taskDetails: [FlowerToTaskDetail!]!
   }
 
   type Task {
@@ -75,7 +80,64 @@ const typeDefs = gql`
     taskType: TaskType!
     status: TaskStatus!
     lastDone: DateTime!
+    taskDetail: TaskDetail
   }
+
+  type TaskDetail {
+  id: Int!
+  picture: String
+  description: String!
+  taskType: TaskType!
+  difficulty: Difficulty!
+  phase: Phase!
+  plants: [PlantToTaskDetail!]!
+  sprouts: [SproutToTaskDetail!]!
+  flowers: [FlowerToTaskDetail!]!
+  tasks: [Task!]!
+  foodToTaskDetails: [FoodToTaskDetail!]!
+}
+
+type JourneyTask {
+  journey: Journey!
+  journeyId: Int!
+  task: Task!
+  taskId: Int!
+  status: TaskStatus!
+  lastDone: DateTime!
+}
+
+type PlantToTaskDetail {
+  plantId: Int!
+  taskDetailId: Int!
+  order: Int!
+  plant: Plant!
+  taskDetail: TaskDetail!
+}
+
+type SproutToTaskDetail {
+  sproutId: Int!
+  taskDetailId: Int!
+  order: Int!
+  sprout: Sprout!
+  taskDetail: TaskDetail!
+}
+
+type FoodToTaskDetail {
+  foodId: Int!
+  taskDetailId: Int!
+  order: Int!
+  food: Food!
+  taskDetail: TaskDetail!
+}
+
+type FlowerToTaskDetail {
+  flowerId: Int!
+  taskDetailId: Int!
+  order: Int!
+  flower: Flower!
+  taskDetail: TaskDetail!
+}
+
 
   enum Role {
     USER

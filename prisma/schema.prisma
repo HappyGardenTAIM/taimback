@@ -12,11 +12,11 @@ datasource db {
 }
 
 model User {
-  id        Int         @id @default(autoincrement())
-  createdAt DateTime    @default(now())
-  email     String?     @unique
-  name      String      @unique
-  role      Role        @default(USER)
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  email     String?   @unique
+  name      String    @unique
+  role      Role      @default(USER)
   journeys  Journey[]
 }
 
@@ -42,58 +42,64 @@ model Plant {
   difficulty    Difficulty
   maintenance   String
   type          PlantType
-  sprout        Sprout?     
+  sprout        Sprout?
   food          Food?
   flower        Flower?
   journeys      Journey[]
+  taskDetails   PlantToTaskDetail[]
 }
 
 model Sprout {
-  id           Int     @id @default(autoincrement())
-  plant        Plant   @relation(fields: [plantId], references: [id])
-  plantId      Int     @unique
+  id           Int                  @id @default(autoincrement())
+  plant        Plant                @relation(fields: [plantId], references: [id])
+  plantId      Int                  @unique
   sproutLength Int
   usage        String?
   benefits     String?
+  taskDetails  SproutToTaskDetail[]
 }
 
 model Food {
-  id         Int     @id @default(autoincrement())
-  plant      Plant   @relation(fields: [plantId], references: [id])
-  plantId    Int     @unique
-  light      Light
-  watering   Int
-  harvesting Int?
-  pruning    Int?
-  maturity   String
-  usage      String?
-  benefits   String?
+  id          Int                @id @default(autoincrement())
+  plant       Plant              @relation(fields: [plantId], references: [id])
+  plantId     Int                @unique
+  light       Light
+  watering    Int
+  harvesting  Int?
+  pruning     Int?
+  maturity    String
+  usage       String?
+  benefits    String?
+  taskDetails FoodToTaskDetail[]
 }
 
 model Flower {
-  id         Int     @id @default(autoincrement())
-  plant      Plant   @relation(fields: [plantId], references: [id])
-  plantId    Int     @unique
-  light      Light
-  watering   Int
-  pruning    Int?
-  maturity   String
-  appearance String
-  usage      String?
+  id          Int                  @id @default(autoincrement())
+  plant       Plant                @relation(fields: [plantId], references: [id])
+  plantId     Int                  @unique
+  light       Light
+  watering    Int
+  pruning     Int?
+  maturity    String
+  appearance  String
+  usage       String?
+  taskDetails FlowerToTaskDetail[]
 }
 
 model Task {
-  id         Int           @id @default(autoincrement())
-  journeys   JourneyTask[]
-  taskType   TaskType
-  status     TaskStatus
-  lastDone   DateTime
+  id           Int           @id @default(autoincrement())
+  journeys     JourneyTask[]
+  taskType     TaskType
+  status       TaskStatus
+  lastDone     DateTime
+  taskDetailId Int?
+  taskDetail   TaskDetail?   @relation(fields: [taskDetailId], references: [id])
 }
 
 model JourneyTask {
-  journey   Journey     @relation(fields: [journeyId], references: [id])
+  journey   Journey    @relation(fields: [journeyId], references: [id])
   journeyId Int
-  task      Task        @relation(fields: [taskId], references: [id])
+  task      Task       @relation(fields: [taskId], references: [id])
   taskId    Int
   status    TaskStatus
   lastDone  DateTime
@@ -153,4 +159,66 @@ enum TaskStatus {
   PENDING
   COMPLETED
   SKIPPED
+}
+
+model TaskDetail {
+  id          Int        @id @default(autoincrement())
+  picture     String?
+  description String
+  taskType    TaskType
+  difficulty  Difficulty
+  phase       Phase
+
+  plants           PlantToTaskDetail[]
+  sprouts          SproutToTaskDetail[]
+  flowers          FlowerToTaskDetail[]
+  Task             Task[]
+  FoodToTaskDetail FoodToTaskDetail[]
+}
+
+model PlantToTaskDetail {
+  plantId      Int
+  taskDetailId Int
+  order        Int
+
+  plant      Plant      @relation(fields: [plantId], references: [id])
+  taskDetail TaskDetail @relation(fields: [taskDetailId], references: [id])
+
+  @@id([plantId, taskDetailId])
+  @@unique([plantId, order])
+}
+
+model SproutToTaskDetail {
+  sproutId     Int
+  taskDetailId Int
+  order        Int
+
+  sprout     Sprout     @relation(fields: [sproutId], references: [id])
+  taskDetail TaskDetail @relation(fields: [taskDetailId], references: [id])
+
+  @@id([sproutId, taskDetailId])
+  @@unique([sproutId, order])
+}
+
+model FoodToTaskDetail {
+  foodId       Int
+  taskDetailId Int
+  order        Int
+
+  food       Food       @relation(fields: [foodId], references: [id])
+  taskDetail TaskDetail @relation(fields: [taskDetailId], references: [id])
+
+  @@id([foodId, taskDetailId])
+}
+
+model FlowerToTaskDetail {
+  flowerId     Int
+  taskDetailId Int
+  order        Int
+
+  flower     Flower     @relation(fields: [flowerId], references: [id])
+  taskDetail TaskDetail @relation(fields: [taskDetailId], references: [id])
+
+  @@id([flowerId, taskDetailId])
+  @@unique([flowerId, order])
 }

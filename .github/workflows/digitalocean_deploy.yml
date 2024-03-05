@@ -70,6 +70,12 @@ jobs:
             docker rm $(docker ps -aq)
             # Start a new container with the pulled image
             docker run -d -e DATABASE_URL=${{ secrets.DATABASE_URL }} --network taimnetwork --name ${{ env.IMAGE_NAME }} -p 80:4000 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
+      
+      - name: Wait for the deployment to complete
+        run: sleep 30s
+        
+      - name: Start Docker Compose and reset Prisma migrations
+        run: |
             # Start Docker Compose
             cd /taimback
             docker-compose up -d

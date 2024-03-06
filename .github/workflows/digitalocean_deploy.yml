@@ -41,11 +41,12 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.HOST }} '
             ls -la
             cd /taimback
-            git pull origin main
+            git pull origin main --force
             # Stop and remove running containers
             docker stop $(docker ps -q)
             docker rm $(docker ps -aq)
             docker-compose up -d
+            sleep 30s
             '
   deploy:
     runs-on: ubuntu-latest
@@ -75,4 +76,5 @@ jobs:
             # Start Docker Compose
             cd /taimback
             docker-compose up -d
+            sleep 30s
             docker exec ${{ env.IMAGE_NAME }} npx prisma migrate reset --force

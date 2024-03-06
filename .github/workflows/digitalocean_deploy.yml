@@ -38,9 +38,10 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.HOST }} '
+            ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@${{ secrets.HOST }} '
             ls -la
             cd /taimback
+            git config pull.rebase true
             git pull origin main --force
             # Stop and remove running containers
             docker stop $(docker ps -q)

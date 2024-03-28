@@ -30,7 +30,8 @@ model Journey {
   plantId   Int
   status    JourneyStatus @default(ACTIVE)
   phase     Phase         @default(PREP)
-  tasks     JourneyTask[]
+  type      PlantType
+  tasks     Task[]
 }
 
 model Plant {
@@ -41,7 +42,6 @@ model Plant {
   maxGrowthTime Int
   difficulty    Difficulty
   maintenance   String
-  type          PlantType
   sprout        Sprout?
   food          Food?
   flower        Flower?
@@ -88,7 +88,7 @@ model Flower {
 
 model Task {
   id           Int           @id @default(autoincrement())
-  journeys     JourneyTask[]
+  journeys     Journey[]
   taskType     TaskType
   status       TaskStatus
   lastDone     DateTime
@@ -96,16 +96,6 @@ model Task {
   taskDetail   TaskDetail?   @relation(fields: [taskDetailId], references: [id])
 }
 
-model JourneyTask {
-  journey   Journey    @relation(fields: [journeyId], references: [id])
-  journeyId Int
-  task      Task       @relation(fields: [taskId], references: [id])
-  taskId    Int
-  status    TaskStatus
-  lastDone  DateTime
-
-  @@id([journeyId, taskId])
-}
 
 enum Role {
   USER
@@ -146,6 +136,7 @@ enum Light {
 }
 
 enum TaskType {
+  PREP
   SOAK
   RINSE
   WATER

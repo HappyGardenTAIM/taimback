@@ -22,13 +22,12 @@ const resolvers = {
     journeyTypes: () => {
       return Object.values(PlantType);
     },
-    plantList: async (_, { type}, { prisma }: ResolverContext) => { 
-      return await prisma.plant.findMany({
-        where: { type },
-        include: { sprout: true, food: true, flower: true},
-      });
-    },
+    plantList: async (_, __, { prisma }: ResolverContext) => { 
+      return await prisma.plant.findMany();
+    },    
   },
+  
+
 
   Mutation: {
     createUser: async (_, { data }, { prisma }: ResolverContext) => {
@@ -36,6 +35,20 @@ const resolvers = {
     },
     createJourney: async (_, { data }, { prisma }: ResolverContext) => {
       return await prisma.journey.create({ data });
+    },
+    createTask: async (_, { data }, { prisma }: ResolverContext) => {
+      return await prisma.task.create({
+        data: {
+          taskType: data.taskType,
+          lastDone: data.lastDone,
+          status: data.status,
+          journeys: {
+            connect: { id: data.journeyId}
+          },
+          taskDetailId: data.taskDetailId
+        },
+        include: { journeys: true }
+      })
     },
   },
 
@@ -72,6 +85,66 @@ const resolvers = {
       return await prisma.journey
         .findUnique({ where: { id: parent.id } })
         .tasks();
+    },
+    taskDetails: async (parent, _, { prisma }: ResolverContext) => {
+      const journey = await prisma.journey.findUnique({
+        where: { id: parent.id },
+        include: { 
+          plant: {
+            include: {
+              sprout: true,
+              food: true,
+              flower: true
+            }
+          }
+        }
+      });
+      
+      if (!journey) {
+        throw new Error('Journey not found');
+      }
+      
+      const type = parent.type;
+      
+      let typeTasksToAdd;
+      if (type === 'SPROUT') {
+        typeTasksToAdd = await prisma.sproutToTaskDetail.findMany({
+          where: {sproutId: journey.plant.sprout.id}, 
+          include: { taskDetail: true }});
+          typeTasksToAdd = typeTasksToAdd.map(task => ({
+            ...task,
+            __typename: 'SproutToTaskDetail'
+          }));
+      } else if (type === 'FOOD') {  
+        typeTasksToAdd = await prisma.foodToTaskDetail.findMany({
+          where: {foodId: journey.plant.food.id}, 
+          include: { taskDetail: true }});
+          typeTasksToAdd = typeTasksToAdd.map(task => ({
+            ...task,
+            __typename: 'FoodToTaskDetail'
+          }));
+      } else if (type === 'FLOWER') {
+        typeTasksToAdd = await prisma.flowerToTaskDetail.findMany({
+          where: {flowerId: journey.plant.flower.id }, 
+          include: { taskDetail: true }});
+          typeTasksToAdd = typeTasksToAdd.map(task => ({
+            ...task,
+            __typename: 'FlowerToTaskDetail'
+          }));
+      } else {
+        typeTasksToAdd = null;
+      }
+      
+      return {
+        plantTasks: prisma.plantToTaskDetail.findMany({ 
+          where: { plantId: journey.plant.id },
+          include: { taskDetail: true }
+        }),
+        typeTasks: typeTasksToAdd,
+        doneTasks: prisma.journey
+        .findUnique({ where: { id: parent.id } })
+        .tasks({include: { taskDetail: true }})
+      }
     },
   },
 };

@@ -16,12 +16,13 @@ const typeDefs = gql`
     id: Int!
     startedAt: DateTime!
     updatedAt: DateTime!
+    type: PlantType!  
     user: User!
     plant: Plant!
     status: JourneyStatus!
     phase: Phase!
-    tasks: [Task!]!
-    journeyTasks: [JourneyTask!]!
+    tasks: Task
+    taskDetails: TaskDetails!
   }
 
   type Plant {
@@ -31,13 +32,11 @@ const typeDefs = gql`
     minGrowthTime: Int!          
     maxGrowthTime: Int!          
     difficulty: Difficulty!   
-    maintenance: String!       
-    type: PlantType!    
+    maintenance: String!         
     sprout: Sprout      
     food: Food        
     flower: Flower      
     journeys: [Journey!]!
-    taskDetails: [PlantToTaskDetail!]!
   }
 
   type Sprout {
@@ -93,51 +92,68 @@ const typeDefs = gql`
   plants: [PlantToTaskDetail!]!
   sprouts: [SproutToTaskDetail!]!
   flowers: [FlowerToTaskDetail!]!
+  foods: [FoodToTaskDetail!]!
   tasks: [Task!]!
-  foodToTaskDetails: [FoodToTaskDetail!]!
-}
+  }
 
-type JourneyTask {
-  journey: Journey!
-  journeyId: Int!
-  task: Task!
-  taskId: Int!
-  status: TaskStatus!
-  lastDone: DateTime!
-}
+  type PlantToTaskDetail {
+    plantId: Int!
+    taskDetailId: Int!
+    order: Int!
+    plant: Plant!
+    taskDetail: TaskDetail!
+  }
 
-type PlantToTaskDetail {
-  plantId: Int!
-  taskDetailId: Int!
-  order: Int!
-  plant: Plant!
-  taskDetail: TaskDetail!
-}
+  type SproutToTaskDetail {
+    sproutId: Int!
+    taskDetalId: Int!
+    order: Int!
+    sprout: Sprout!
+    taskDetail: TaskDetail!
+  }
 
-type SproutToTaskDetail {
-  sproutId: Int!
-  taskDetailId: Int!
-  order: Int!
-  sprout: Sprout!
-  taskDetail: TaskDetail!
-}
+  type FoodToTaskDetail {
+    foodId: Int!
+    taskDetailId: Int!
+    order: Int!
+    food: Food!
+    taskDetail: TaskDetail!
+  }
 
-type FoodToTaskDetail {
-  foodId: Int!
-  taskDetailId: Int!
-  order: Int!
-  food: Food!
-  taskDetail: TaskDetail!
-}
+  type FlowerToTaskDetail {
+    flowerId: Int!
+    taskDetailId: Int!
+    order: Int!
+    flower: Flower!
+    taskDetail: TaskDetail!
+  }
 
-type FlowerToTaskDetail {
-  flowerId: Int!
-  taskDetailId: Int!
-  order: Int!
-  flower: Flower!
-  taskDetail: TaskDetail!
-}
+  type TaskDetails {
+    plantTasks: [PlantToTaskDetail!]!
+    typeTasks: [TypeTaskDetail]
+    doneTasks: [Task]
+  }
 
+  union TypeTaskDetail = SproutToTaskDetail | FoodToTaskDetail | FlowerToTaskDetail
+  
+  type Query {
+    users: [User!]!
+    user(id: Int!): User
+    journeys: [Journey!]!
+    journey(id: Int!): Journey
+    journeyTypes: [PlantType!]!
+    plantList: [Plant!]!
+    taskDetails: TaskDetails
+    plants(type: PlantType!): [PlantUnion]!
+  }
+
+  union PlantUnion = Sprout | Food | Flower
+ 
+  type Mutation {
+    createUser(data: CreateUserInput!): User!
+    createJourney(data: CreateJourneyInput!): Journey!
+    createTask(data: CreateTaskInput!): Task!
+  }
 
   enum Role {
     USER
@@ -178,6 +194,7 @@ type FlowerToTaskDetail {
   }
 
   enum TaskType {
+    PREP
     SOAK
     RINSE
     WATER
@@ -193,19 +210,6 @@ type FlowerToTaskDetail {
     SKIPPED
   }
 
-  type Query {
-    users: [User!]!
-    user(id: Int!): User
-    journeys: [Journey!]!
-    journey(id: Int!): Journey
-    journeyTypes: [PlantType!]!
-    plantList(type: PlantType!): [Plant!]!
-  }
-
-  type Mutation {
-    createUser(data: CreateUserInput!): User!
-    createJourney(data: CreateJourneyInput!): Journey!
-  }
 
   input CreateUserInput {
     # email: String
@@ -216,6 +220,14 @@ type FlowerToTaskDetail {
   input CreateJourneyInput {
     userId: Int!
     plantId: Int!
+    type: PlantType!
+  }
+
+  input CreateTaskInput {
+    journeyId: Int!
+    taskType: TaskType!
+    lastDone: DateTime!
+    status: TaskStatus!
   }
 `;
 

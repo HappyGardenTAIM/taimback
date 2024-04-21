@@ -24,11 +24,30 @@ const resolvers = {
     },
     plantList: async (_, __, { prisma }: ResolverContext) => { 
       return await prisma.plant.findMany();
-    },    
+    },
+    plants: async (_, { type }, { prisma }: ResolverContext) => {
+      let plants;
+      if (type === 'SPROUT') {
+        plants = await prisma.sprout.findMany({
+          include: { plant: true }
+        });
+        return plants.map((sprout) => ({ ...sprout, __typename: 'Sprout' }));
+      } else if (type === 'FOOD') {
+        plants = await prisma.food.findMany({
+          include: { plant: true }
+        });
+        return plants.map((food) => ({ ...food, __typename: 'Food' }));
+      } else if (type === 'FLOWER') {
+        plants = await prisma.flower.findMany({
+          include: { plant: true }
+        });
+        return plants.map((flower) => ({ ...flower, __typename: 'Flower' }));
+      } else {
+        return [];
+      }
+    }    
   },
   
-
-
   Mutation: {
     createUser: async (_, { data }, { prisma }: ResolverContext) => {
       return await prisma.user.create({ data });

@@ -21,7 +21,7 @@ const typeDefs = gql`
     plant: Plant!
     status: JourneyStatus!
     phase: Phase!
-    tasks: Task
+    tasks: [Task]
     taskDetails: TaskDetails!
   }
 
@@ -75,11 +75,10 @@ const typeDefs = gql`
 
   type Task {
     id: Int!
-    journeys: [Journey!]!
-    taskType: TaskType!
-    status: TaskStatus!
+    journey: Journey!
+    status: TaskStatus
     lastDone: DateTime!
-    taskDetail: TaskDetail
+    taskDetail: TaskDetail!
   }
 
   type TaskDetail {
@@ -93,7 +92,7 @@ const typeDefs = gql`
   sprouts: [SproutToTaskDetail!]!
   flowers: [FlowerToTaskDetail!]!
   foods: [FoodToTaskDetail!]!
-  tasks: [Task!]!
+  tasks: [Task]
   }
 
   type PlantToTaskDetail {
@@ -225,9 +224,8 @@ const typeDefs = gql`
 
   input CreateTaskInput {
     journeyId: Int!
-    taskType: TaskType!
     lastDone: DateTime!
-    status: TaskStatus!
+    taskDetailId: Int!
   }
 `;
 

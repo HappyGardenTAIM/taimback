@@ -87,13 +87,13 @@ model Flower {
 }
 
 model Task {
-  id           Int           @id @default(autoincrement())
-  journeys     Journey[]
-  taskType     TaskType
-  status       TaskStatus
+  id           Int          @id @default(autoincrement())
+  journey      Journey      @relation(fields: [journeyId], references: [id])
+  journeyId    Int
+  status       TaskStatus   @default(COMPLETED)
   lastDone     DateTime
-  taskDetailId Int?
-  taskDetail   TaskDetail?   @relation(fields: [taskDetailId], references: [id])
+  taskDetailId Int
+  taskDetail   TaskDetail   @relation(fields: [taskDetailId], references: [id])
 }
 
 

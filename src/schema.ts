@@ -58,15 +58,11 @@ const resolvers = {
     createTask: async (_, { data }, { prisma }: ResolverContext) => {
       return await prisma.task.create({
         data: {
-          taskType: data.taskType,
           lastDone: data.lastDone,
-          status: data.status,
-          journeys: {
-            connect: { id: data.journeyId}
-          },
+          journeyId: data.journeyId,
           taskDetailId: data.taskDetailId
         },
-        include: { journeys: true }
+        include: { taskDetail: true, journey: true}
       })
     },
   },

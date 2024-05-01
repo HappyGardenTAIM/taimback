@@ -32,6 +32,7 @@ model Journey {
   phase     Phase         @default(PREP)
   type      PlantType
   tasks     Task[]
+  endDate   DateTime?
 }
 
 model Plant {

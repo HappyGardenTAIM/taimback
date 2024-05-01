@@ -23,6 +23,7 @@ const typeDefs = gql`
     phase: Phase!
     tasks: [Task]
     taskDetails: TaskDetails!
+    endDate: DateTime
   }
 
   type Plant {
@@ -152,6 +153,7 @@ const typeDefs = gql`
     createUser(data: CreateUserInput!): User!
     createJourney(data: CreateJourneyInput!): Journey!
     createTask(data: CreateTaskInput!): Task!
+    updateJourneyDate(data: UpdateJourneyDateInput!): Journey!
   }
 
   enum Role {
@@ -226,6 +228,11 @@ const typeDefs = gql`
     journeyId: Int!
     lastDone: DateTime!
     taskDetailId: Int!
+  }
+
+  input UpdateJourneyDateInput {
+    journeyId: Int!
+    endDate: DateTime!
   }
 `;
 

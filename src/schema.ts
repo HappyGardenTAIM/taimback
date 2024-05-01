@@ -65,6 +65,12 @@ const resolvers = {
         include: { taskDetail: true, journey: true}
       })
     },
+    updateJourneyDate: async (_, { data }, { prisma }: ResolverContext) => {
+      return await prisma.journey.update({
+        where: { id: data.journeyId },
+        data: { endDate: data.endDate }
+      });
+    }
   },
 
   User: {

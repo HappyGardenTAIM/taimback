@@ -10,6 +10,8 @@ const typeDefs = gql`
     name: String!
     role: Role!
     journeys: [Journey!]
+    completedJourneys: [Journey!]
+    inProgressJourneys: [Journey!]
   }
 
   type Journey {

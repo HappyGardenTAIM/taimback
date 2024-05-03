@@ -79,6 +79,16 @@ const resolvers = {
         .findUnique({ where: { id: parent.id } })
         .journeys();
     },
+    completedJourneys: async (parent, _, { prisma }: ResolverContext) => {
+      return await prisma.user
+        .findUnique({ where: { id: parent.id } })
+        .journeys({ where: { endDate: { not: null }} });
+    },
+    inProgressJourneys: async (parent, _, { prisma }: ResolverContext) => {
+      return await prisma.user
+      .findUnique({ where: { id: parent.id } })
+      .journeys({ where: { endDate: { equals: null }} });
+    }
   },
 
   Journey: {
@@ -105,7 +115,7 @@ const resolvers = {
     tasks: async (parent, _, { prisma }: ResolverContext) => {
       return await prisma.journey
         .findUnique({ where: { id: parent.id } })
-        .tasks();
+        .tasks({ include: { taskDetail: true } });
     },
     taskDetails: async (parent, _, { prisma }: ResolverContext) => {
       const journey = await prisma.journey.findUnique({

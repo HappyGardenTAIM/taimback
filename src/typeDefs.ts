@@ -10,8 +10,6 @@ const typeDefs = gql`
     name: String!
     role: Role!
     journeys: [Journey!]
-    completedJourneys: [Journey!]
-    inProgressJourneys: [Journey!]
   }
 
   type Journey {
@@ -156,6 +154,7 @@ const typeDefs = gql`
     createJourney(data: CreateJourneyInput!): Journey!
     createTask(data: CreateTaskInput!): Task!
     updateJourneyDate(data: UpdateJourneyDateInput!): Journey!
+    updateJourneyStatus(data: UpdateJourneyStatusInput!): Journey!
   }
 
   enum Role {
@@ -235,6 +234,11 @@ const typeDefs = gql`
   input UpdateJourneyDateInput {
     journeyId: Int!
     endDate: DateTime!
+  }
+
+  input UpdateJourneyStatusInput {
+    journeyId: Int!
+    status: JourneyStatus!
   }
 `;
 

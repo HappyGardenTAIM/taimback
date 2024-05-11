@@ -9,7 +9,8 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 84,
     difficulty: 'EASY',
     maintenance: 'Vajab pidevalt niisket mulda ja palju päikest. Õied näpista ära, et soodustada lehtede kasvu.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/9/97/Ocimum_basilicum_8zz.jpg',
+    maturity: 'Lehed on umbes 5 cm pikad, lõhnavad, helerohelised. Taim ei tohi veel õitseda.',
+    image: 'https://www.nature-and-garden.com/wp-content/uploads/sites/4/2021/12/potted-basil-harvest.jpg',
   },
   {
     name: 'Piparmünt',
@@ -17,7 +18,8 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 84,
     difficulty: 'EASY',
     maintenance: 'Vajab regulaarset kastmist ja poolvarjulist kasvukohta. Kärpimine mõjub talle hästi.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/6/64/Starr_080117-1594_Mentha_x_piperita.jpg',
+    maturity: 'Varred on 15-20 cm pikad, lehed tumerohelised ja lõhnavad. Õitsemine pole veel alanud.',
+    image: 'https://cdn.mos.cms.futurecdn.net/z5EtUHRcBLwPE7yHxqCSBd-1600-80.jpg.webp',
   },
   {
     name: 'Maasikas',
@@ -25,6 +27,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 126,
     difficulty: 'MEDIUM',
     maintenance: 'Tahab palju päikesevalgust ja sagedast kastmist. Viljade saamiseks tubastes tingimustes võib vaja minna käsitsi tolmeldamist.',
+    maturity: 'Marjad on täiesti punased, aga mitte veel ülipehmed.',
     image: 'https://live.staticflickr.com/5279/5859532475_887cd2f427_b.jpg'
   },
   {
@@ -33,7 +36,8 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 42,
     difficulty: 'EASY',
     maintenance: 'Muld peab olema parajalt niiske, aga mitte vettinud, ja päikest parasjagu. Kasvu edendamiseks korja välimised lehed valmides ära.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Lettuce_Cultivars_by_David_Shankbone.JPG',
+    maturity: 'Korja suuremaid väliseid lehti vastavalt vajadusele või korista 5 nädalat päras idanemist kogu taim.',
+    image: 'https://www.epicgardening.com/wp-content/uploads/2023/05/lettuce-containers-1200x667.jpeg',
   },
   {
     name: 'Tomat',
@@ -41,6 +45,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 126,
     difficulty: 'MEDIUM',
     maintenance: 'Vajab mõõdukat kastmist ja päikeselist kasvukohta. Sobib hästi rõdukasti või aknalauale.',
+    maturity: 'Viljad on täiesti punased ja parajalt pehmed.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Tomato_je.jpg',
   },
   {
@@ -49,6 +54,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 5,
     difficulty: 'EASY',
     maintenance: 'Loputa ja nõruta seemneid hoolikalt igal hommikul ja õhtul. Taga piisav õhuringlus.',
+    maturity: 'Idud on umbes 3 cm pikad.',
     image: 'https://c.pxhere.com/photos/56/b9/alfalfa_sprouts_seedlings_sprout_salad_healthy_delicious_gourmet_nutrition_food-547412.jpg!d',
   },
   {
@@ -57,6 +63,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 4,
     difficulty: 'EASY',
     maintenance: 'Loputa ja nõruta hoolikalt igal hommikul ja õhtul.',
+    maturity: 'Idud on umbes 2 cm pikad.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/f/fe/Mung_bean_sprouts%2C_close-up.jpg',
   },
   {
@@ -65,6 +72,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 4,
     difficulty: 'HARD',
     maintenance: 'Leota üleöö seemneid vees, seejärel nõruta. Loputa igal hommikul ja õhtul.',
+    maturity: 'Idud on umbes 3 cm pikad.',
     image: 'https://live.staticflickr.com/688/21186442492_be23bdf37d_b.jpg',
   },
   {
@@ -73,6 +81,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 5,
     difficulty: 'MEDIUM',
     maintenance: 'Tahab alguses olla pimedas, pärast valges. Loputa igal hommikul ja õhtul.',
+    maturity: 'Idud on umbes 3 cm pikad.',
     image: 'https://live.staticflickr.com/5478/10951951054_2f4d0a1276_b.jpg',
   },
   {
@@ -81,6 +90,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 5,
     difficulty: 'MEDIUM',
     maintenance: 'Loputa ja nõruta hoolikalt, taga piisav õhuringlus.',
+    maturity: 'Idud on umbes 3 cm pikad.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Brokkolisprossen-schale-knolle.jpg',
   },
   {
@@ -88,7 +98,8 @@ const plantData: Prisma.PlantCreateInput[] = [
     minGrowthTime: 50,
     maxGrowthTime: 65,
     difficulty: 'EASY',
-    maintenance: 'Ilusate värviliste õitega lill. Ei karda külma. Sobib hästi nii potti, rõdukasti kui peenrale. Kasta ja väeta regulaarselt. Närbunud õied nopi ära, et soodustada uute õite kasvu.',  
+    maintenance: 'Ilusate värviliste õitega lill. Ei karda külma. Sobib hästi nii potti, rõdukasti kui peenrale. Kasta ja väeta regulaarselt. Närbunud õied nopi ära, et soodustada uute õite kasvu.',
+    maturity: 'Avaneb esimene õis.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Viola_%C3%97_wittrockiana_001.jpg/640px-Viola_%C3%97_wittrockiana_001.jpg',
   },
   {
@@ -97,6 +108,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 65,
     difficulty: 'EASY',
     maintenance: 'Kergesti kasvatatav lill. Nõuab vähe hoolt. Armastab valgust, kuid talub ka varjulist kasvukohta. Kasta mõõdukalt.',
+    maturity: 'Avaneb esimene õis.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/CentaureaCyanus-bloem-kl.jpg/800px-CentaureaCyanus-bloem-kl.jpg',
   },
   {
@@ -104,7 +116,8 @@ const plantData: Prisma.PlantCreateInput[] = [
     minGrowthTime: 50,
     maxGrowthTime: 65,
     difficulty: 'EASY',
-    maintenance: 'Ilus värvikirevate õitega lill. Armastab sooja, poolvarjulist kasvukohta. Kasta rikkalikult ja väeta igal kastmiskorral.  ',
+    maintenance: 'Ilus värvikirevate õitega lill. Armastab sooja, poolvarjulist kasvukohta. Kasta rikkalikult ja väeta igal kastmiskorral.',
+    maturity: 'Avaneb esimene õis.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/2020-11-17_14_33_20_Impatiens_walleriana_with_red-purple_flowers_blooming_in_late_autumn_along_Metrotech_Drive_at_the_Sully_Place_Shopping_Center_in_Chantilly%2C_Fairfax_County%2C_Virginia.jpg/640px-thumbnail.jpg',
   },
   {
@@ -113,6 +126,7 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 65,
     difficulty: 'EASY',
     maintenance: 'Vähenõudlik lill. Eelistab valguseküllast kasvukohta. Ei armasta liigset niiskust.',
+    maturity: 'Avaneb esimene õis.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Cal%C3%A8ndula.jpg/640px-Cal%C3%A8ndula.jpg',
   },
   {
@@ -121,13 +135,13 @@ const plantData: Prisma.PlantCreateInput[] = [
     maxGrowthTime: 65,
     difficulty: 'EASY',
     maintenance: 'Värvirohkete õitega lill. Armastab väga sooja ja päikeselist kasvukohta, on väga põuakindel. Kasta ja väeta harva.',
+    maturity: 'Avaneb esimene õis.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Portulaca_grandiflora%2C_Burdwan%2C_30032014_%287%29.jpg/640px-Portulaca_grandiflora%2C_Burdwan%2C_30032014_%287%29.jpg',
   },
 ]
 
 const sproutData: Prisma.SproutCreateInput[] = [
   {
-    sproutLength: 3,
     usage: 'Lutserni idud sobivad oma õrna maitsega suurepäraselt salatitesse ja võileibadele.',
     benefits: 'Lutsernis on rohkesti C-vitamiini ja kiudaineid ning ta aitab alandada kolesterooli.',
     plant: {
@@ -137,7 +151,6 @@ const sproutData: Prisma.SproutCreateInput[] = [
     },
   },
   {
-    sproutLength: 2,
     usage: 'Mungoa idud sobivad suurepäraselt salatitesse ja suppidesse.',
     benefits: 'Munguba sisaldab rohkelt valku ja kiudaineid. Toetab seedimist ja tugevdab immuunsüsteemi.',
     plant: {
@@ -147,7 +160,6 @@ const sproutData: Prisma.SproutCreateInput[] = [
     },
   },
   {
-    sproutLength: 3,
     usage: 'Läätseidud maitsevad hästi salatites ja valgurikka lisandina erinevates roogades.',
     benefits: 'Läätsedes on palju kiudaineid ja valku, nad mõjuvad hästi südame tervisele ja veresuhkrule.',
     plant: {
@@ -157,7 +169,6 @@ const sproutData: Prisma.SproutCreateInput[] = [
     },
   },
   {
-    sproutLength: 3,
     usage: 'Rediseidud annavad vürtsika noodi salatitele ja võileibadele.',
     benefits: 'Redises on ohtralt C-vitamiini ja mineraalaineid ning ta parandab seedimist ja immuunsust',
     plant: {
@@ -167,7 +178,6 @@ const sproutData: Prisma.SproutCreateInput[] = [
     },
   },
   {
-    sproutLength: 3,
     usage: 'Brokoli idud lisavad hõrku pähklist maitset salatitele, võileibadele ja kaunistusena pearoogadele.',
     benefits: 'Täis vitamiine ja hea südamele.',
     plant: {
@@ -184,7 +194,6 @@ const foodData: Prisma.FoodCreateInput[] = [
     benefits: 'Hea K-vitamiini allikas.',
     light: 'FULL_SUN',
     watering: 1,
-    maturity: 'Lehed umbes 5 cm pikad, lõhnavad, helerohelised. Taim ei tohi veel õitseda.',
     harvesting: 3,
     pruning: 1,
     plant: {
@@ -198,7 +207,6 @@ const foodData: Prisma.FoodCreateInput[] = [
     benefits: 'Rahustava ja puhastava toimega, sisaldab ohtralt eeterlikke õlisid.',
     light: 'PARTIAL_SUN',
     watering: 1,
-    maturity: 'Varred on 15-20 cm pikad, lehed tumerohelised ja lõhnavad. Õitsemine pole veel alanud.',
     harvesting: 3,
     pruning: null,
     plant: {
@@ -212,7 +220,6 @@ const foodData: Prisma.FoodCreateInput[] = [
     benefits: 'Rohkelt C-vitamiini ja kiudaineid.',
     light: 'FULL_SUN',
     watering: 1,
-    maturity: 'Korja marju, kui need on täiesti punased, aga mitte veel ülipehmed.',
     harvesting: 3,
     pruning: null,
     plant: {
@@ -226,7 +233,6 @@ const foodData: Prisma.FoodCreateInput[] = [
     benefits: 'Kalorivaene, aitab kaalulangetamisel.',
     light: 'PARTIAL_SUN',
     watering: 1,
-    maturity: 'Korista kas kogu taim umbes 5 nädala möödumisel idanemisest või korja suuremaid väliseid lehti vastavalt vajadusele.',
     harvesting: 3,
     pruning: null,
     plant: {
@@ -240,7 +246,6 @@ const foodData: Prisma.FoodCreateInput[] = [
     benefits: 'Rohkelt vitamiine, kiudaineid ja antioksüdante.',
     light: 'FULL_SUN',
     watering: 1,
-    maturity: 'Korja viljad, kui need on täiesti punased ja parajalt pehmed.',
     harvesting: 3,
     plant: {
       connect: {
@@ -254,7 +259,6 @@ const flowerData: Prisma.FlowerCreateInput[] = [
   {
     light: 'FULL_SUN', 
     watering: 1,
-    maturity: 'Kõrgus umbes 20-30 cm. Lehed ümarad ja rohelised, õitel on viis kroonlehte.',
     appearance: 'Õied väga paljudes värvitoonides, võivad olla ka mustrilised.',
     usage: 'Õied on söödavad ja sobivad toitude ning jookide kaunistamiseks.',
     plant: {
@@ -266,7 +270,6 @@ const flowerData: Prisma.FlowerCreateInput[] = [
   {
     light: 'FULL_SUN',
     watering: 1,
-    maturity: 'Kõrgus 15-100 cm. Lehed valkjashallid.',
     appearance: 'Sinised või sinivioletsed õied. Harva ka purpurpunased, roosad või valged.',
     usage: 'Õied on söödavad. Kaunista toite ja jooke või valmista teed.',
     plant: {
@@ -278,7 +281,6 @@ const flowerData: Prisma.FlowerCreateInput[] = [
   {
     light: 'FULL_SUN',
     watering: 1,
-    maturity: 'Kõrgus 10-35 cm. Lehed on tumerohelised, läikivad ja ovaalsed.',
     appearance: 'Õite värv punastest toonidest oranži, valge ja lillani.',
     plant: {
       connect: {
@@ -289,7 +291,6 @@ const flowerData: Prisma.FlowerCreateInput[] = [
   {
     light: 'FULL_SUN',
     watering: 1,
-    maturity: 'Kõrgus 50-60 cm. Lehe pind on ereroheline ning veidi kare ja kleepuv. ',
     appearance: 'Kollased või oranžid õied.',
     usage: 'Õied on söödavad ja neid kasutatakse ka ravimtaimena. Kaunista nendega toitu, lisa jääkuubikutesse või valmista rahustavat teed.',
     plant: {
@@ -301,7 +302,6 @@ const flowerData: Prisma.FlowerCreateInput[] = [
   {
     light: 'FULL_SUN',
     watering: 1,
-    maturity: 'Kõrgus 8-20 cm. Varred lihakad ja lamanduvad.',
     appearance: 'Õied punased, roosad, oranžid või kollased.',
     plant: {
       connect: {
@@ -313,144 +313,128 @@ const flowerData: Prisma.FlowerCreateInput[] = [
 
 const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   {
-    description: 'Leota seemneid üleöö vees, et kiirendada idanemisprotsessi.',
+    description: 'Vajad kaaneta klaaspurki, marlit, kummipaela ja idandamiseks mõeldud seemneid.',
+    taskType: 'PREP',
+    subType: 'SPROUT',
+    difficulty: 'EASY',
+    phase: 'PREP',
+    picture: 'https://nami-nami.ee/files/img/idandamine3.jpg',
+  },
+  {
+    description: 'Pane purki 1-2 sl seemneid ja kata veega. Leota üleöö, järgmisel hommikul vala vesi ära.',
     taskType: 'SOAK',
+    subType: 'SPROUT',
     difficulty: 'EASY',
     phase: 'PREP',
     picture: 'https://hilahcooking.com/wp-content/uploads/2014/01/soaking-seeds.jpg',
   },
   {
-    description: 'Loputa seemneid hommikul ja õhtul, et vältida hallituse teket.',
+    description: 'Loputa seemneid igal hommikul ja õhtul. Kata purgisuu marliga ja lase seemnetel nõrguda.',
     taskType: 'RINSE',
+    subType: 'SPROUT',
     difficulty: 'EASY',
     phase: 'SOAKING',
-    picture: 'https://2.bp.blogspot.com/-khRqIxk4kS8/UtWutF-C6fI/AAAAAAAAFGU/Ik0Y-NMBkqI/s1600/DSC_0001.JPG',
+    picture: 'https://cdn.shopify.com/s/files/1/0234/7849/files/rinsing-sprouting-lentils.jpg?13558836802249936948',
   },
   {
-    description: 'Kasta taimi regulaarselt, hoides mulla niiskust tasakaalus.',
+    description: 'Vajad seemneid, külvimulda ja potti.\nVali potile sobiv asukoht, arvestades taime valgusvajadust.',
+    taskType: 'PREP',
+    difficulty: 'EASY',
+    phase: 'PREP',
+    picture: 'https://plantperfect.com/wp-content/uploads/2023/02/Plant-Perfect-Bismarck-How-to-Start-Seeding-Your-Early-Vegetables-filling-pot-with-soil.jpg',
+  },
+  {
+    description: 'Täida pott niisutatud mullaga.\nKülva seeme, kata kerge mullakihiga ja vajuta pealt õrnalt kinni.',
+    taskType: 'CHECK',
+    difficulty: 'EASY',
+    phase: 'PREP',
+    picture: 'https://www.mediastorehouse.com/p/617/hand-planting-sunflower-seeds-biodegradable-pots-9533941.jpg.webp',
+  },
+  {
+    description: 'Kasuta kastmiseks alguses veepritsi. Hoia muld parajalt niiske, kuid mitte märg.',
     taskType: 'WATER',
     difficulty: 'EASY',
     phase: 'GROWING',
-    picture: 'https://thisismygarden.com/wp-content/uploads/2018/05/Watering-the-garden.jpg',
+    picture: 'https://c.stocksy.com/a/mhOF00/z9/3669890.jpg',
   },
   {
-    description: 'Väeta taimi, et toetada nende kasvu ja arengut.',
+    description: 'Suuremaid taimi väeta vajadusel, et toetada nende kasvu ja arengut.',
     taskType: 'FERTILIZE',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
-    picture: 'https://www.thespruce.com/thmb/LR7bKlDob-OhmMPp1ZVJDgzxFcA=/2121x1414/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-545582750-61ed3446a17140e48b9dabe3e5c6115c.jpg',
+    picture: 'https://www.bhg.com/thmb/uyoTL0aGgdY_C7JhFnFZxBnxNYw=/1245x0/filters:no_upscale():strip_icc()/compost-soil-shovel-c0bdd251-5a38b6d7d23a4344a9550d3d65da9211.jpg',
   },
   {
-    description: 'Näpista ära üleliigsed võrsed, et soodustada tugevamat kasvu.',
+    description: 'Kasvu soodustamiseks näpista ära üleliigsed võrsed ja maitsetaimi kärbi regulaarselt.',
     taskType: 'PRUNE',
+    subType: 'FOOD',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
-    picture: 'https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1ehS39.img?w=768&h=480&m=6',
+    picture: 'https://www.thespruce.com/thmb/rXh8Amt1P1ACXA5LJVK2SsCyaIk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-prune-basil-5222034-05-a66b415fcf4d4fb2b889cee698b4ca66.jpg',
   },
   {
-    description: 'Korista saak, kui taimed on jõudnud täiskasvuni.',
-    taskType: 'HARVEST',
-    difficulty: 'EASY',
-    phase: 'HARVESTING',
-    picture: 'https://www.farmersalmanac.com/wp-content/uploads/2020/11/garden-harvest-produce-last-longer-As_305375846.jpeg',
-  },
+    description: 'Kärbi väljaveninud võrseid. Eemalda närtsinud õied, et soodustada uute õite kasvu.',
+    taskType: 'PRUNE',
+    subType: 'FLOWER',
+    difficulty: 'MEDIUM',
+    phase: 'GROWING',
+    picture: 'https://www.firmusenergy.co.uk/images/sized/images/uploads/categories/Dead_heading_Petunias_and_other_annuals_is_an_essential_job-582x386.jpg',
+  },  
   {
-    description: 'Kontrolli taimi regulaarselt, et tuvastada kahjureid või haigusi.',
+    description: 'Kontrolli taime regulaarselt, et tuvastada kahjurid või haigused.',
     taskType: 'CHECK',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
     picture: 'https://i.pinimg.com/originals/66/1b/e6/661be6755585c1386e355c806947096f.jpg',
   },
   {
-    description: 'Vali sobiv asukoht taimede istutamiseks, arvestades nende valgusvajadusi.',
-    taskType: 'CHECK',
-    difficulty: 'EASY',
-    phase: 'PREP',
-    picture: 'https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1hBpSK.img?w=1400&h=933&m=4&q=68',
-  },
-  {
-    description: 'Kasuta kvaliteetset mulda, mis toetab taimede kasvu.',
-    taskType: 'CHECK',
-    difficulty: 'EASY',
-    phase: 'PREP',
-    picture: 'https://i0.wp.com/blog.backtotheroots.com/wp-content/uploads/2020/10/organic-potting-soil.jpeg?fit=1600%2C1067&ssl=1',
-  },
-  {
-    description: 'Eemalda umbrohud, et taimed saaksid paremini kasvada.',
-    taskType: 'CHECK',
-    difficulty: 'MEDIUM',
-    phase: 'GROWING',
-    picture: 'https://vlsinc.com/wp-content/uploads/2020/02/weeding-1536x1023.jpg',
-  },
-  {
-    description: 'Jälgi taimede kastmisvajadusi, eriti kuuma ilmaga.',
-    taskType: 'WATER',
-    difficulty: 'EASY',
-    phase: 'GROWING',
-    picture: 'https://www.ksre.k-state.edu/news/images/news-stories/2018/ag-natural-resources/DrySoilweb.jpg',
-  },
-  {
-    description: 'Kaalu katteloori kasutamist öökülmade korral.',
-    taskType: 'CHECK',
-    difficulty: 'EASY',
-    phase: 'GROWING',
-    picture: 'https://ak1.ostkcdn.com/images/products/is/images/direct/3ec899b2a541ea89d4711cbb703ba6ce75922d2f/Agfabric-Row-Cover-Fabric-for-Plant-Frost-Protection-Harsh-Weather.jpg?imwidth=714&impolicy=medium',
-  },
-  {
-    description: 'Kaitse taimi kahjurite eest looduslike vahenditega.',
+    description: 'Kaitse taime kahjurite eest looduslike vahenditega, näiteks pritsi nõgeseleotisega.',
     taskType: 'CHECK',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
     picture: 'https://zameenblog.s3.amazonaws.com/blog/wp-content/uploads/2020/04/Organic-Pesticides-for-Your-Garden-Cover-27-04.jpg',
   },
   {
-    description: 'Taga taimedele piisav valgus, kasutades vajadusel lisavalgustust.',
+    description: 'Jälgi, et valgust oleks piisavalt.\nVajadusel kasuta lisavalgustust.',
+    taskType: 'CHECK',
+    difficulty: 'MEDIUM',
+    phase: 'GROWING',
+    picture: 'https://hortes.ee/wp-content/uploads/2023/11/6435200292780.jpeg',
+  },
+  {
+    description: 'Jälgi, et taim oleks soojas, aga mitte liiga palavas kohas.',
     taskType: 'CHECK',
     difficulty: 'EASY',
     phase: 'GROWING',
-    picture: 'https://www.plantindex.com/wp-content/uploads/2021/04/house-plants-grow-under-normal-led-light.jpg',
+    picture: 'https://cdn.shopify.com/s/files/1/0915/1060/files/AdobeStock_486813162_600x600.jpg?v=1702241172',
   },
   {
-    description: 'Väldi taimede ülekastmist, et hoida juured tervena.',
-    taskType: 'WATER',
+    description: 'Eemalda närtsinud või kahjustatud taimeosad.',
+    taskType: 'CHECK',
+    difficulty: 'MEDIUM',
+    phase: 'GROWING',
+    picture: 'https://i0.wp.com/deepgreenpermaculture.com/wp-content/uploads/2022/01/image2.jpg?ssl=1',
+  },
+  {
+    description: 'Väldi taime ülekastmist, et hoida juured tervena.',
+    taskType: 'CHECK',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
     picture: 'https://mag.dibasabz.com/wp-content/uploads/2021/03/HOME_Rain1_1200x785px-e1616447438582-1024x684.jpg',
   },
   {
-    description: 'Harvenda tihedalt istutatud taimi, et parandada õhuringlust.',
-    taskType: 'PRUNE',
-    difficulty: 'MEDIUM',
-    phase: 'GROWING',
-    picture: 'https://www.thespruce.com/thmb/yV80UGi0MLvDkS3vTdGYcBQVoIU=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/154457348-56a6d36b3df78cf7729070e4.jpg',
-  },
-  {
-    description: 'Rakenda kohapeal kompostimist, et rikastada mulda.',
-    taskType: 'FERTILIZE',
-    difficulty: 'EASY',
-    phase: 'PREP',
-    picture: 'https://www.bhg.com/thmb/uyoTL0aGgdY_C7JhFnFZxBnxNYw=/1245x0/filters:no_upscale():strip_icc()/compost-soil-shovel-c0bdd251-5a38b6d7d23a4344a9550d3d65da9211.jpg',
-  },
-  {
-    description: 'Valmistu ette talveks, kattes mitmeaastased taimed.',
-    taskType: 'CHECK',
-    difficulty: 'MEDIUM',
-    phase: 'HARVESTING',
-    picture: 'https://theworldofsurvival.com/wp-content/uploads/2022/01/The-7-Best-Plant-Covers-for-Winter-Frost.jpg',
-  },
-  {
-    description: 'Säilita saaki õigesti, et pikendada selle säilivusaega.',
-    taskType: 'HARVEST',
-    difficulty: 'EASY',
-    phase: 'HARVESTING',
-    picture: 'https://southeastagnet.com/wp-content/uploads/2019/10/food-cellar.shutterstock_1194456010-1024x768.jpg',
-  },
-  {
-    description: 'Analüüsi hooaja lõpus taimede kasvu ja õpi kogemustest.',
+    description: 'Märgi üles, mida oled taime vajaduste kohta õppinud.',
     taskType: 'CHECK',
     difficulty: 'EASY',
     phase: 'HARVESTING',
     picture: 'https://cdn2.hubspot.net/hubfs/18130/AdobeStock_102891724-658317-edited.jpeg',
+  },
+  {
+    description: 'Naudi saaki!',
+    taskType: 'HARVEST',
+    difficulty: 'EASY',
+    phase: 'HARVESTING',
+    picture: 'https://www.farmersalmanac.com/wp-content/uploads/2020/11/garden-harvest-produce-last-longer-As_305375846.jpeg',
   },
 ];
 
@@ -501,21 +485,23 @@ async function main() {
   }
 
   const allTaskDetails = await prisma.taskDetail.findMany();
+  const plantTaskDetails = allTaskDetails.filter(pt => pt.taskType == 'HARVEST')
+  const sproutTaskDetails = allTaskDetails.filter(st => st.subType == 'SPROUT')
+  const foodTaskDetails = allTaskDetails.filter(ft => ft.subType == 'FOOD' || ft.subType == null && ft.taskType != 'HARVEST')
+  const flowerTaskDetails = allTaskDetails.filter(ft => ft.subType == 'FLOWER' || ft.subType == null && ft.taskType != 'HARVEST')
 
   for (const p of plantData) {
     const plant = await prisma.plant.create({
       data: p,
     });
-    console.log(`Created plant with id: ${plant.id}`);
+    console.log(`Created plant with id: ${plant.id}`);    
 
-    const randomTaskDetails = allTaskDetails.sort(() => 0.5 - Math.random()).slice(0, 5);
-
-    for (const td of randomTaskDetails) {
+    for (const pt of plantTaskDetails) {
       await prisma.plantToTaskDetail.create({
         data: {
           plantId: plant.id,
-          taskDetailId: td.id,
-          order: randomTaskDetails.indexOf(td),
+          taskDetailId: pt.id,
+          order: allTaskDetails.length - 1,
         },
       });
     }
@@ -527,14 +513,18 @@ async function main() {
     });
     console.log(`Created sprout with id: ${sprout.id}`);
 
-    const randomTaskDetails = allTaskDetails.sort(() => 0.5 - Math.random()).slice(0, 5);
+    const taskTypeOrder = {
+      PREP: 0,
+      SOAK: 1,
+      RINSE: 2,
+    };
 
-    for (const td of randomTaskDetails) {
+    for (const st of sproutTaskDetails) {
       await prisma.sproutToTaskDetail.create({
         data: {
           sproutId: sprout.id,
-          taskDetailId: td.id,
-          order: randomTaskDetails.indexOf(td),
+          taskDetailId: st.id,
+          order: taskTypeOrder[st.taskType],
         },
       });
     }
@@ -546,14 +536,45 @@ async function main() {
     });
     console.log(`Created food with id: ${food.id}`);
 
-    const randomTaskDetails = allTaskDetails.sort(() => 0.5 - Math.random()).slice(0, 5);
+    const sortedFoodTaskDetails = foodTaskDetails.sort((a, b) => {
+      // First, compare by phase
+      if (a.phase !== b.phase) {
+        if (a.phase === "PREP") return -1;
+        if (b.phase === "PREP") return 1;
+        if (a.phase === "GROWING") return -1;
+        if (b.phase === "GROWING") return 1;
+        if (a.phase === "HARVESTING") return -1;
+        if (b.phase === "HARVESTING") return 1;
+      }
+      
+      // Within the same phase, compare by task type
+      const taskTypeOrder = {
+        "PREP": 0,
+        "WATER": 1,
+        "FERTILIZE": 2,
+        "PRUNE": 3,
+        "CHECK": 4
+      };
+    
+      const taskTypeComparison = taskTypeOrder[a.taskType] - taskTypeOrder[b.taskType];
+      if (taskTypeComparison !== 0) {
+        return taskTypeComparison;
+      }
+    
+      // For CHECK tasks, randomize the order
+      if (a.taskType === "CHECK") {
+        return Math.random() - 0.5;
+      }
+    
+      return 0;
+    });
 
-    for (const td of randomTaskDetails) {
+    for (const ed of foodTaskDetails) {
       await prisma.foodToTaskDetail.create({
         data: {
           foodId: food.id,
-          taskDetailId: td.id,
-          order: randomTaskDetails.indexOf(td),
+          taskDetailId: ed.id,
+          order: sortedFoodTaskDetails.indexOf(ed) + 1,
         },
       });
     }
@@ -565,14 +586,45 @@ async function main() {
     });
     console.log(`Created flower with id: ${flower.id}`);
 
-    const randomTaskDetails = allTaskDetails.sort(() => 0.5 - Math.random()).slice(0, 5);
+    const sortedFlowerTaskDetails = flowerTaskDetails.sort((a, b) => {
+      // First, compare by phase
+      if (a.phase !== b.phase) {
+        if (a.phase === "PREP") return -1;
+        if (b.phase === "PREP") return 1;
+        if (a.phase === "GROWING") return -1;
+        if (b.phase === "GROWING") return 1;
+        if (a.phase === "HARVESTING") return -1;
+        if (b.phase === "HARVESTING") return 1;
+      }
+      
+      // Within the same phase, compare by task type
+      const taskTypeOrder = {
+        "PREP": 0,
+        "WATER": 1,
+        "FERTILIZE": 2,
+        "PRUNE": 3,
+        "CHECK": 4
+      };
+    
+      const taskTypeComparison = taskTypeOrder[a.taskType] - taskTypeOrder[b.taskType];
+      if (taskTypeComparison !== 0) {
+        return taskTypeComparison;
+      }
+    
+      // For CHECK tasks, randomize the order
+      if (a.taskType === "CHECK") {
+        return Math.random() - 0.5;
+      }
+    
+      return 0;
+    });
 
-    for (const td of randomTaskDetails) {
+    for (const fd of flowerTaskDetails) {
       await prisma.flowerToTaskDetail.create({
         data: {
           flowerId: flower.id,
-          taskDetailId: td.id,
-          order: randomTaskDetails.indexOf(td),
+          taskDetailId: fd.id,
+          order: sortedFlowerTaskDetails.indexOf(fd) + 1,
         },
       });
     }

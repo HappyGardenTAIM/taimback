@@ -33,7 +33,8 @@ const typeDefs = gql`
     minGrowthTime: Int!          
     maxGrowthTime: Int!          
     difficulty: Difficulty!   
-    maintenance: String!         
+    maintenance: String!
+    maturity: String!         
     sprout: Sprout      
     food: Food        
     flower: Flower      
@@ -43,7 +44,6 @@ const typeDefs = gql`
   type Sprout {
     id: Int!
     plant: Plant!
-    sproutLength: Int!
     usage: String
     benefits: String
     taskDetails: [SproutToTaskDetail!]!
@@ -56,7 +56,6 @@ const typeDefs = gql`
     watering: Int!
     harvesting: Int
     pruning: Int
-    maturity: String!
     usage: String
     benefits: String
     taskDetails: [FoodToTaskDetail!]!
@@ -68,7 +67,6 @@ const typeDefs = gql`
     light: Light!
     watering: Int!
     pruning: Int
-    maturity: String!
     appearance: String!
     usage: String
     taskDetails: [FlowerToTaskDetail!]!
@@ -89,6 +87,7 @@ const typeDefs = gql`
   taskType: TaskType!
   difficulty: Difficulty!
   phase: Phase!
+  subType: PlantType
   plants: [PlantToTaskDetail!]!
   sprouts: [SproutToTaskDetail!]!
   flowers: [FlowerToTaskDetail!]!

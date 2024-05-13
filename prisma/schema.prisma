@@ -152,13 +152,14 @@ enum TaskStatus {
 }
 
 model TaskDetail {
-  id          Int        @id @default(autoincrement())
-  picture     String?
-  description String
-  taskType    TaskType
-  difficulty  Difficulty
-  phase       Phase
-  subType     PlantType?
+  id               Int        @id @default(autoincrement())
+  picture          String?
+  description      String
+  longDescription  String?
+  taskType         TaskType
+  difficulty       Difficulty
+  phase            Phase
+  subType          PlantType?
   plants           PlantToTaskDetail[]
   sprouts          SproutToTaskDetail[]
   flowers          FlowerToTaskDetail[]

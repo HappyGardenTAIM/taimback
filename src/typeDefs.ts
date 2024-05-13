@@ -84,6 +84,7 @@ const typeDefs = gql`
   id: Int!
   picture: String
   description: String!
+  longDescription: String
   taskType: TaskType!
   difficulty: Difficulty!
   phase: Phase!

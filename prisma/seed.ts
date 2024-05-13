@@ -314,6 +314,7 @@ const flowerData: Prisma.FlowerCreateInput[] = [
 const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   {
     description: 'Vajad kaaneta klaaspurki, marlit, kummipaela ja idandamiseks mõeldud seemneid.',
+    longDescription: 'Hästi sobib pooleliitrine purk. On olemas ka spetsiaalsed idandamisnõud purgi või mitmekorruselise kandiku kujul.\n\nMarli asemel võid kasutada ka muud vett läbilaskvat kangast, kas või vanu sukkpükse.\n\nSeemneid leiab paljudest poodidest, aga mõnel juhul võivad need olla sobimatud, sest on kuumutatud või keemiliselt töödeldud. Kõige kindlam on osta just idandamiseks mõeldud seemned',
     taskType: 'PREP',
     subType: 'SPROUT',
     difficulty: 'EASY',
@@ -322,6 +323,7 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Pane purki 1-2 sl seemneid ja kata veega. Leota üleöö, järgmisel hommikul vala vesi ära.',
+    longDescription: 'Võta ühe osa seemnete kohta umbes kaks-kolm osa vett.\n\nLeotada võiks umbes 8-10 tundi, aga ülitäpne aeg pole oluline. Kui jätad seemned vette väga kauaks, lähevad nad lõpuks hallitama ja tuleb ära visata.',
     taskType: 'SOAK',
     subType: 'SPROUT',
     difficulty: 'EASY',
@@ -329,7 +331,8 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
     picture: 'https://hilahcooking.com/wp-content/uploads/2014/01/soaking-seeds.jpg',
   },
   {
-    description: 'Loputa seemneid igal hommikul ja õhtul. Kata purgisuu marliga ja lase seemnetel nõrguda.',
+    description: 'Loputa ja nõruta seemneid igal hommikul ja õhtul. Ära pane purki otsese päikese kätte.',
+    longDescription: 'Loputa seemneid hoolikalt külma veega.\n\nKata purgi suu marliga ja kinnita kummipaelaga.\n\nPane purk poolkaldu suu allapoole, et liigne vesi saaks välja voolata.\n\nIdudele võivad tekkida juurekarvad, mis meenutavad hallitust, aga on ohutud.',
     taskType: 'RINSE',
     subType: 'SPROUT',
     difficulty: 'EASY',
@@ -338,13 +341,15 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Vajad seemneid, külvimulda ja potti.\nVali potile sobiv asukoht, arvestades taime valgusvajadust.',
+    longDescription: 'Kõige kindlam on kasutada spetsiaalset külvimulda.\n\nPoti läbimõõt võiks olla umbes 20 cm. Külvinõuna saab kasutada ka tühje toidupakendeid, nagu erinevad topsid ja tetrapakid, mille põhja on tehtud auk.\n\n',
     taskType: 'PREP',
     difficulty: 'EASY',
     phase: 'PREP',
-    picture: 'https://plantperfect.com/wp-content/uploads/2023/02/Plant-Perfect-Bismarck-How-to-Start-Seeding-Your-Early-Vegetables-filling-pot-with-soil.jpg',
+    picture: 'https://www.bobvila.com/wp-content/uploads/2022/11/Handful-of-Potting-Soil.jpg',
   },
   {
     description: 'Täida pott niisutatud mullaga.\nKülva seeme, kata kerge mullakihiga ja vajuta pealt õrnalt kinni.',
+    longDescription: 'Muld peaks olema toatemperatuuril. Pane see suuremase anumasse, mulju tükid lahti ja niisuta. Muld on õige niiskusega, kui surud peotäie kokku ja ta ei lirtsu, aga ei pudene ka kohe laiali.\n\nTäida pott mullaga, aga jäta servani mõni sentimeeter ruumi. Ära tambi mulda kõvasti kinni, aga tihenda veidi servadest ja pinnalt.\n\nNiisuta mullapinda veepritsiga, külva seeme ja niisuta uuesti. Kata külv õhukese mullakihiga ja vajuta õrnalt kinni.',
     taskType: 'CHECK',
     difficulty: 'EASY',
     phase: 'PREP',
@@ -352,20 +357,23 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Kasuta kastmiseks alguses veepritsi. Hoia muld parajalt niiske, kuid mitte märg.',
+    longDescription: 'Kuni taim pole veel tärganud, kasta külvi veepritsiga. Tugev veejuga võib seemne uhtuda mullapinnalt ära või hoopis liiga sügavale mulda.\n\nKasuta toasooja vett. Kasta siis, kui muld on pealt kuiv, aga mõni sentimeeter sügavamalt veel niiske.\n\nÄra lase taimel läbi kuivada, aga väldi ka liigset kastmist, sest see võib põhjustada juurte mädanemist.',
     taskType: 'WATER',
     difficulty: 'EASY',
     phase: 'GROWING',
-    picture: 'https://c.stocksy.com/a/mhOF00/z9/3669890.jpg',
+    picture: 'https://cdn.mos.cms.futurecdn.net/mxQUAPaFFBH4KoSk7CRLv7-1600-80.jpg.webp',
   },
   {
-    description: 'Suuremaid taimi väeta vajadusel, et toetada nende kasvu ja arengut.',
+    description: 'Kui taimel on juba kaks idulehte ja kaks pärislehte, võib ta hakata vajama väetist.',
+    longDescription: 'Väetamise vajadus sõltub külvimullast ja taimest. Hästi sobib vedelväetis või väetisepulgad.\n\nJärgi hoolikalt väetise pakendil antud juhendeid ja väldi üleväetamist.',
     taskType: 'FERTILIZE',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
     picture: 'https://www.bhg.com/thmb/uyoTL0aGgdY_C7JhFnFZxBnxNYw=/1245x0/filters:no_upscale():strip_icc()/compost-soil-shovel-c0bdd251-5a38b6d7d23a4344a9550d3d65da9211.jpg',
   },
   {
-    description: 'Kasvu soodustamiseks näpista ära üleliigsed võrsed ja maitsetaimi kärbi regulaarselt.',
+    description: 'Kärpimine soodustab paljude taimede kasvu.',
+    longDescription: 'Maitsetaimedel tuleks ladvad regulaarselt ära näpistada, et soodustada lehtede kasvu. Samuti tuleks eemalda õied. Kui taim on liiga pikaks kasvanud, võib ülaosa ära lõigata, et ta hakkaks hargnema.\n\nTomatil tuleks pidevalt eemaldada külgvõsusid. Need on võsud, mis kasvavad välja lehekaenlast tomati peavarre ja selle haru vahel.\n\nMaasikal tuleks eemaldada võsundid. Need on pikkad varred, mille otsast hakkab kasvama uus väike taim.',
     taskType: 'PRUNE',
     subType: 'FOOD',
     difficulty: 'MEDIUM',
@@ -373,7 +381,8 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
     picture: 'https://www.thespruce.com/thmb/rXh8Amt1P1ACXA5LJVK2SsCyaIk=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/how-to-prune-basil-5222034-05-a66b415fcf4d4fb2b889cee698b4ca66.jpg',
   },
   {
-    description: 'Kärbi väljaveninud võrseid. Eemalda närtsinud õied, et soodustada uute õite kasvu.',
+    description: 'Kärbi väljaveninud võrsed. Eemalda närtsinud õied, et soodustada uute õite kasvu.',
+    longDescription: 'Väga pikaks veninud, närtsinud või kahjustatud taimeosade eemaldamine paneb taime tihedamaks kasvama ja rikkalikumalt õitsema.',
     taskType: 'PRUNE',
     subType: 'FLOWER',
     difficulty: 'MEDIUM',
@@ -382,20 +391,15 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },  
   {
     description: 'Kontrolli taime regulaarselt, et tuvastada kahjurid või haigused.',
+    longDescription: 'Suurim oht pisitaimele on tõusmepõletik: varre alumine ots muutub peeneks ja tumedaks, taim lamandub ja hukkub. Selle ärahoidmiseks kasta mõõdukalt ja korrapäraselt ning hoia ühtlast parajalt sooja temperatuuri.\n\nKui avastad kahjurid, eralda saastunud taimed ja pritsi mõne loodusliku vahendiga, näiteks rohelise seebi lahusega. Järgi hoolikalt kasutusjuhendit.',
     taskType: 'CHECK',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
     picture: 'https://i.pinimg.com/originals/66/1b/e6/661be6755585c1386e355c806947096f.jpg',
   },
   {
-    description: 'Kaitse taime kahjurite eest looduslike vahenditega, näiteks pritsi nõgeseleotisega.',
-    taskType: 'CHECK',
-    difficulty: 'MEDIUM',
-    phase: 'GROWING',
-    picture: 'https://zameenblog.s3.amazonaws.com/blog/wp-content/uploads/2020/04/Organic-Pesticides-for-Your-Garden-Cover-27-04.jpg',
-  },
-  {
     description: 'Jälgi, et valgust oleks piisavalt.\nVajadusel kasuta lisavalgustust.',
+    longDescription: 'Kui kasvatad taimi aknalaual, siis pööra neid regulaarselt, et nad kasvaksid ühtlaselt.\n\nKui taimed on pikad ja hõredad, siis on neil ilmselt valgusepuudus.\n\nEriti talvel võib kasu olla taimelambist.',
     taskType: 'CHECK',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
@@ -403,6 +407,7 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Jälgi, et taim oleks soojas, aga mitte liiga palavas kohas.',
+    longDescription: 'Kõige parem, kui temperatuur on päeval 18-20°C, öösel paar kraadi madalam, kuid mitte alla 15°C. Kui on liiga soe, võib taime kasv pidurduda või lehed muutuda kollaseks. Liiga külmas ei kasva taim samuti hästi ja lehed võivad minna pruuniks.\n\nJälgi ka, et taim ei oleks tuuletõmbuses.\n\nTalvel võib külm aknalual kasvavale taimele liiga teha ka siis, kui praost puhub sisse tuult või lehed puutuvad vastu jäist aknaklaasi.',
     taskType: 'CHECK',
     difficulty: 'EASY',
     phase: 'GROWING',
@@ -410,13 +415,15 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Eemalda närtsinud või kahjustatud taimeosad.',
+    longDescription: 'Kui lehed, varred või õied on kollased või pruunid, närtsinud või muul moel kummalise välimusega, tasub need ära lõigata. See soodustab uute lehtede ja õite kasvu ja hoiab ära haiguste leviku.',
     taskType: 'CHECK',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
-    picture: 'https://i0.wp.com/deepgreenpermaculture.com/wp-content/uploads/2022/01/image2.jpg?ssl=1',
+    picture: 'https://www.gardendesign.com/pictures/images/675x529Max/site_3/late-blight-tomato-leaf-tomato-with-late-blight-shutterstock-com_15742.jpg',
   },
   {
     description: 'Väldi taime ülekastmist, et hoida juured tervena.',
+    longDescription: 'Kasta ainult siis, kui muld on pealt kuiv, aga mõni sentimeeter sügavamalt veel niiske.\n\nPotil peab kindlasti põhjas olema auk, millest liigne vesi saab välja joosta.\n\nÜlekastetud taime lehed lähevad kollaseks, varrele võivad tekkida mädaplekid ja mullapinnale valkjas kiht.',
     taskType: 'CHECK',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
@@ -424,6 +431,7 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Märgi üles, mida oled taime vajaduste kohta õppinud.',
+    longDescription: 'Kirjuta üles, kuidas kasvatamine õnnestus, mis läks hästi ja kus tekkisid probleemid. Nii oskad järgmise taime eest veelgi paremini hoolitseda.',
     taskType: 'CHECK',
     difficulty: 'EASY',
     phase: 'HARVESTING',
@@ -431,6 +439,7 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Naudi saaki!',
+    longDescription: 'Kui taim on valmis, saad nautida oma töö vilju!',
     taskType: 'HARVEST',
     difficulty: 'EASY',
     phase: 'HARVESTING',

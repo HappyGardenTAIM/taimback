@@ -314,7 +314,7 @@ const flowerData: Prisma.FlowerCreateInput[] = [
 const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   {
     description: 'Vajad kaaneta klaaspurki, marlit, kummipaela ja idandamiseks mõeldud seemneid.',
-    longDescription: 'Hästi sobib pooleliitrine purk. On olemas ka spetsiaalsed idandamisnõud purgi või mitmekorruselise kandiku kujul.\n\nMarli asemel võid kasutada ka muud vett läbilaskvat kangast, kas või vanu sukkpükse.\n\nSeemneid leiab paljudest poodidest, aga mõnel juhul võivad need olla sobimatud, sest on kuumutatud või keemiliselt töödeldud. Kõige kindlam on osta just idandamiseks mõeldud seemned',
+    longDescription: 'Hästi sobib pooleliitrine purk. On olemas ka spetsiaalsed idandamisnõud purgi või mitmekorruselise kandiku kujul.\n\nMarli asemel võid kasutada ka muud vett läbilaskvat kangast, kas või vanu sukkpükse.\n\nSeemneid leiab paljudest poodidest, aga mõnel juhul võivad need olla sobimatud, sest on kuumutatud või keemiliselt töödeldud. Kõige kindlam on osta just idandamiseks mõeldud seemned.',
     taskType: 'PREP',
     subType: 'SPROUT',
     difficulty: 'EASY',
@@ -332,7 +332,7 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Loputa ja nõruta seemneid igal hommikul ja õhtul. Ära pane purki otsese päikese kätte.',
-    longDescription: 'Loputa seemneid hoolikalt külma veega.\n\nKata purgi suu marliga ja kinnita kummipaelaga.\n\nPane purk poolkaldu suu allapoole, et liigne vesi saaks välja voolata.\n\nIdudele võivad tekkida juurekarvad, mis meenutavad hallitust, aga on ohutud.',
+    longDescription: 'Loputa seemneid hoolikalt külma veega.\n\nKata purgi suu marliga ja kinnita see kummipaelaga.\n\nPane purk poolkaldu suu allapoole, et liigne vesi saaks välja voolata.\n\nIdudele võivad tekkida juurekarvad, mis meenutavad hallitust, aga on ohutud.',
     taskType: 'RINSE',
     subType: 'SPROUT',
     difficulty: 'EASY',
@@ -349,7 +349,7 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Täida pott niisutatud mullaga.\nKülva seeme, kata kerge mullakihiga ja vajuta pealt õrnalt kinni.',
-    longDescription: 'Muld peaks olema toatemperatuuril. Pane see suuremase anumasse, mulju tükid lahti ja niisuta. Muld on õige niiskusega, kui surud peotäie kokku ja ta ei lirtsu, aga ei pudene ka kohe laiali.\n\nTäida pott mullaga, aga jäta servani mõni sentimeeter ruumi. Ära tambi mulda kõvasti kinni, aga tihenda veidi servadest ja pinnalt.\n\nNiisuta mullapinda veepritsiga, külva seeme ja niisuta uuesti. Kata külv õhukese mullakihiga ja vajuta õrnalt kinni.',
+    longDescription: 'Muld peaks olema toatemperatuuril. Pane see suuremase anumasse, mulju tükid lahti ja niisuta. Muld on õige niiskusega, kui surud peotäie kokku ja ta ei lirtsu, aga ei pudene ka kohe laiali.\n\nTäida pott mullaga, jättes servani mõne sentimeetri ruumi. Ära tambi mulda kõvasti kinni, aga tihenda veidi servadest ja pinnalt.\n\nNiisuta mullapinda veepritsiga, külva seeme ja niisuta uuesti. Kata külv õhukese mullakihiga ja vajuta õrnalt kinni.',
     taskType: 'CHECK',
     difficulty: 'EASY',
     phase: 'PREP',
@@ -357,7 +357,7 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Kasuta kastmiseks alguses veepritsi. Hoia muld parajalt niiske, kuid mitte märg.',
-    longDescription: 'Kuni taim pole veel tärganud, kasta külvi veepritsiga. Tugev veejuga võib seemne uhtuda mullapinnalt ära või hoopis liiga sügavale mulda.\n\nKasuta toasooja vett. Kasta siis, kui muld on pealt kuiv, aga mõni sentimeeter sügavamalt veel niiske.\n\nÄra lase taimel läbi kuivada, aga väldi ka liigset kastmist, sest see võib põhjustada juurte mädanemist.',
+    longDescription: 'Kuni taim pole veel tärganud, kasta külvi veepritsiga. Tugev veejuga võib seemne uhtuda mullapinnalt ära või hoopis liiga sügavale mulda.\n\nKasuta toasooja vett. Kasta siis, kui muld on pealt kuiv, aga mõne sentimeetri sügavusel veel niiske.\n\nÄra lase taimel läbi kuivada, kuid väldi ka liigset kastmist, sest see võib põhjustada juurte mädanemist.',
     taskType: 'WATER',
     difficulty: 'EASY',
     phase: 'GROWING',
@@ -407,7 +407,7 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Jälgi, et taim oleks soojas, aga mitte liiga palavas kohas.',
-    longDescription: 'Kõige parem, kui temperatuur on päeval 18-20°C, öösel paar kraadi madalam, kuid mitte alla 15°C. Kui on liiga soe, võib taime kasv pidurduda või lehed muutuda kollaseks. Liiga külmas ei kasva taim samuti hästi ja lehed võivad minna pruuniks.\n\nJälgi ka, et taim ei oleks tuuletõmbuses.\n\nTalvel võib külm aknalual kasvavale taimele liiga teha ka siis, kui praost puhub sisse tuult või lehed puutuvad vastu jäist aknaklaasi.',
+    longDescription: 'Kõige parem, kui temperatuur on päeval 18-20°C, öösel paar kraadi madalam, kuid mitte alla 15°C. Kui on liiga soe, võib taime kasv pidurduda või lehed muutuda kollaseks. Liiga külmas ei kasva taim samuti hästi ja lehed võivad minna pruuniks.\n\nVäldi tuuletõmbust. Näiteks kui õhutad tuba, võta taim enne akna pealt ära.\n\nTalvel võib külm aknalaual kasvavale taimele liiga teha ka siis, kui praost puhub sisse tuult või lehed puutuvad vastu jäist aknaklaasi.',
     taskType: 'CHECK',
     difficulty: 'EASY',
     phase: 'GROWING',
@@ -423,7 +423,7 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Väldi taime ülekastmist, et hoida juured tervena.',
-    longDescription: 'Kasta ainult siis, kui muld on pealt kuiv, aga mõni sentimeeter sügavamalt veel niiske.\n\nPotil peab kindlasti põhjas olema auk, millest liigne vesi saab välja joosta.\n\nÜlekastetud taime lehed lähevad kollaseks, varrele võivad tekkida mädaplekid ja mullapinnale valkjas kiht.',
+    longDescription: 'Kasta ainult siis, kui muld on pealt kuiv, aga mõne sentimeetri sügavusel veel niiske.\n\nPotil peab kindlasti põhjas olema auk, millest liigne vesi saab välja joosta.\n\nÜlekastetud taime lehed lähevad kollaseks, varrele võivad tekkida mädaplekid ja mullapinnale valkjas kiht.',
     taskType: 'CHECK',
     difficulty: 'MEDIUM',
     phase: 'GROWING',
@@ -431,7 +431,7 @@ const taskDetailData: Prisma.TaskDetailCreateInput[] = [
   },
   {
     description: 'Märgi üles, mida oled taime vajaduste kohta õppinud.',
-    longDescription: 'Kirjuta üles, kuidas kasvatamine õnnestus, mis läks hästi ja kus tekkisid probleemid. Nii oskad järgmise taime eest veelgi paremini hoolitseda.',
+    longDescription: 'Kirjuta üles, kuidas kasvatamine õnnestus, mis läks hästi ja kus tekkisid probleemid. Nii oskad järgmise taime eest veelgi paremini hoolitseda!.',
     taskType: 'CHECK',
     difficulty: 'EASY',
     phase: 'HARVESTING',
